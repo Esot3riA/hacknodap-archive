@@ -1,0 +1,24 @@
+.timeline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: inherit;
+  
+  .spine-wrap {
+    display: flex;
+    justify-content: left;
+    
+    .spine {
+      display: flex;
+      justify-content: space-between;
+      border: 3px solid #ffc04c;
+      width: 80%;
+      
+      .historydot {
+        width: 5px;
+        height: 5px;
+        border: 2px solid grey;
+      }
+    }
+  }
+}

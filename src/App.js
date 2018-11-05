@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Timeline from './components/Timeline';
+import GridTable from './components/GridTable';
 
 class App extends Component {
   render() {
     return (
-      <Timeline />
+      <GridTable />
     );
   }
 }
