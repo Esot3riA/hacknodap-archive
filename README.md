@@ -12,9 +12,10 @@
 * backbone-end hover 시 highlighting, current time 표시
 * backbone에 inner shadow 넣기
 * history dot과 backbone-end 디자인 개선 방법 찾기
-
+* W3C CSS Timeline 예제로 convert
 
 ## Useful sites
 
 * [CSSmatic](https://www.cssmatic.com/gradient-generator)
 * [CSS Timeline Examples](https://freefrontend.com/css-timelines/)
+* [W3C CSS Timeline](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_timeline)
