@@ -5,3 +5,16 @@
 맨날 여행 가놓고 막상 기록을 남기기 메우 귀찮아하는 핵노답 9인방(본인 포함)을 위해 만들고 있다.
 
 이런 게 있으면 핵노답이라도(본인 포함) 뭐라도 쓰지 않을까?
+
+
+## Todo
+
+* backbone-end hover 시 highlighting, current time 표시
+* backbone에 inner shadow 넣기
+* history dot과 backbone-end 디자인 개선 방법 찾기
+
+
+## Useful sites
+
+* [CSSmatic](https://www.cssmatic.com/gradient-generator)
+* [CSS Timeline Examples](https://freefrontend.com/css-timelines/)
