@@ -47,26 +47,45 @@
       position: absolute;
       width: 150px;
       height: 200px;
-      padding: 5px;
       background-color: white;
-      border: 5px ridge #f8b500;
-      border-radius: 10px;
+      border: 3px solid #f8b500;
+      border-radius: 5px;
+      
+      .head {
+        height: 30px;
+        background-color: #f8b500;
+        padding: 5px;
+        
+        .date {
+          color: white;
+        }
+        
+        .title {
+          color: white;
+          font-size: 12pt;
+        }
+      }
+      
+      .body {
+        height: 164px;
+        background-color: #ffedbd;
+        padding: 5px;
+      }
     }
     
     .top {
-      top: calc(50% - 305px);
+      top: calc(50% - 250px);
       left: 100px;  // state-calculated value
       
       // connection line
       &::before {
         content: '';
         position: absolute;
-        width: 1px;
-        height: 77px;
-        top: 205px;
-        left: 74px;
-        background-color: #f8b500;
-        box-shadow: 0 0 2px 0 lightgoldenrodyellow;
+        top: 195px;
+        left: 65px;
+        border: medium solid white;
+        border-width: 20px 10px 0 10px;
+        border-color: #f8b500 transparent transparent transparent;
       }
       
       // history circle
@@ -75,7 +94,7 @@
         position: absolute;
         width: 15px;
         height: 15px;
-        top: 289px;
+        top: 236px;
         left: 63px;
         background-color: white;
         border: 4px solid #f8b500;
