@@ -9,6 +9,9 @@ class TimeLine extends Component {
           <div className="history-container top">
             <div className="history">blahblah</div>
           </div>
+          <div className="history-container bottom">
+            <div className="history">another blah</div>
+          </div>
         </div>
       </div>
     );

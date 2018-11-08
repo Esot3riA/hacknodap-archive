@@ -44,17 +44,44 @@
     }
     
     .history-container {
-      position: relative;
-      left: 100px;
+      position: absolute;
+      width: 150px;
+      height: 200px;
+      padding: 5px;
       background-color: white;
+      border: 5px ridge #f8b500;
+      border-radius: 10px;
+    }
+    
+    .top {
+      top: calc(50% - 305px);
+      left: 100px;  // state-calculated value
       
+      // connection line
+      &::before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 77px;
+        top: 205px;
+        left: 74px;
+        background-color: #f8b500;
+        box-shadow: 0 0 2px 0 lightgoldenrodyellow;
+      }
+      
+      // history circle
       &::after {
+        content: '';
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        top: 289px;
+        left: 63px;
         background-color: white;
-        width: 20px;
-        height: 20px;
         border: 4px solid #f8b500;
         border-radius: 50%;
         transition: all 200ms ease;
+        box-shadow: 0 0 2px 1px orange;
       }
       
       &:hover::after {
@@ -63,8 +90,41 @@
       }
     }
     
-    .top {
-      top: -100px; 
+    .bottom {
+      top: calc(50% + 100px);
+      left: 300px;  // state-calculated value
+      
+      // connection line
+      &::before {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 77px;
+        top: -85px;
+        left: 74px;
+        background-color: #f8b500;
+        box-shadow: 0 0 2px 0 lightgoldenrodyellow;
+      }
+      
+      // history circle
+      &::after {
+        content: '';
+        position: absolute;
+        width: 15px;
+        height: 15px;
+        top: -115px;
+        left: 63px;
+        background-color: white;
+        border: 4px solid #f8b500;
+        border-radius: 50%;
+        transition: all 200ms ease;
+        box-shadow: 0 0 2px 1px orange;
+      }
+      
+      &:hover::after {
+        cursor: pointer;
+        box-shadow: 0 0 10px 3px orange;
+      }
     }
     
   }
