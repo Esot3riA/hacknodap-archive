@@ -10,9 +10,12 @@
 ## Todo
 
 * backbone-end hover 시 highlighting, current time 표시
-* backbone에 inner shadow 넣기
-* history dot과 backbone-end 디자인 개선 방법 찾기
-* W3C CSS Timeline 예제로 convert
+* ~~backbone에 inner shadow 넣기~~
+* ~~history dot과 backbone-end 디자인 개선 방법 찾기~~
+* ~~W3C CSS Timeline 예제로 convert~~
+* magic number 투성이인 timeline scss refactoring
+* infinite scrolling in timeline
+* timeline end에 current time 표시하기
 
 ## Useful sites
 
