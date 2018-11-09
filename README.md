@@ -7,6 +7,10 @@
 이런 게 있으면 핵노답이라도(본인 포함) 뭐라도 쓰지 않을까?
 
 
+## Screenshots (in working...)
+![in_working](./inworking.jpg)
+
+
 ## Todo
 
 * backbone-end hover 시 highlighting, current time 표시
@@ -16,6 +20,7 @@
 * magic number 투성이인 timeline scss refactoring
 * infinite scrolling in timeline
 * timeline end에 current time 표시하기
+
 
 ## Useful sites
 

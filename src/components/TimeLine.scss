@@ -61,6 +61,7 @@ $history-container-border: 3px;
   position: absolute;
   width: $history-container-width;
   height: $history-container-height;
+  background-color: $primary-color;
   border: $history-container-border solid $primary-color;
   border-radius: 5px;
 
