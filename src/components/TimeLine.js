@@ -14,7 +14,11 @@ class TimeLine extends Component {
             <div className="body">:)</div>
           </div>
           <div className="history-container bottom">
-            <div className="history">another blah</div>
+            <div className="head">
+              <div className="date">2018.11.09</div>
+              <div className="title">핵노답 아카이브 개발 중</div>
+            </div>
+            <div className="body">개발 중!</div>
           </div>
         </div>
       </div>

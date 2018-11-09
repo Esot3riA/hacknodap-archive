@@ -45,44 +45,45 @@
     
     .history-container {
       position: absolute;
-      width: 150px;
-      height: 200px;
+      width: 200px;
+      height: 250px;
       background-color: white;
       border: 3px solid #f8b500;
       border-radius: 5px;
       
       .head {
-        height: 30px;
+        height: 40px;
         background-color: #f8b500;
-        padding: 5px;
+        padding: 3px;
         
         .date {
           color: white;
+          font-size: x-small;
         }
         
         .title {
           color: white;
-          font-size: 12pt;
+          font-size: small;
         }
       }
       
       .body {
-        height: 164px;
+        height: 204px;
         background-color: #ffedbd;
         padding: 5px;
       }
     }
     
     .top {
-      top: calc(50% - 250px);
+      top: calc(50% - 300px);
       left: 100px;  // state-calculated value
       
-      // connection line
+      // direction arrow
       &::before {
         content: '';
         position: absolute;
-        top: 195px;
-        left: 65px;
+        top: 247px;
+        left: calc(200px / 2 - 13px);
         border: medium solid white;
         border-width: 20px 10px 0 10px;
         border-color: #f8b500 transparent transparent transparent;
@@ -94,8 +95,8 @@
         position: absolute;
         width: 15px;
         height: 15px;
-        top: 236px;
-        left: 63px;
+        top: calc(300px - 13px);
+        left: calc(200px / 2 - 15px);
         background-color: white;
         border: 4px solid #f8b500;
         border-radius: 50%;
@@ -110,29 +111,28 @@
     }
     
     .bottom {
-      top: calc(50% + 100px);
+      top: calc(50% + 50px);
       left: 300px;  // state-calculated value
       
-      // connection line
+      // direction arrow
       &::before {
         content: '';
         position: absolute;
-        width: 1px;
-        height: 77px;
-        top: -85px;
-        left: 74px;
-        background-color: #f8b500;
-        box-shadow: 0 0 2px 0 lightgoldenrodyellow;
+        top: -23px;
+        left: calc(200px / 2 - 13px);
+        border: medium solid white;
+        border-width: 0 10px 20px 10px;
+        border-color: transparent transparent #f8b500 transparent;
       }
       
-      // history circle
+      // history circle.
       &::after {
         content: '';
         position: absolute;
         width: 15px;
         height: 15px;
-        top: -115px;
-        left: 63px;
+        top: -63px;
+        left: calc(200px / 2 - 15px);
         background-color: white;
         border: 4px solid #f8b500;
         border-radius: 50%;
