@@ -15,41 +15,47 @@ $history-container-border: 3px;
           box-sizing: border-box;
 }
 
-// element
-.timeline {
-  position: fixed;
-  top: 50%;
-  left: 0;
-  width: 700px;  // dynamically change later
-  height: 3px;
-  background: $primary-color;
-  box-shadow: 0 0 3px 1px $primary-color-strong;
+// Elements
+.timeline-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  .timeline {
+    display: flex;
+    align-items: center;
+    width: 1500px;
+    height: 3px;
+    margin: 0 100px;
+    background: $primary-color;
+    box-shadow: 0 0 3px 1px $primary-color-strong;
 
-  &::after {
-    content: '';
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    top: -2px;
-    left: 695px;  // dynamically change later
-    background-color: $circle-background-color;
-    border-radius: 50%;
-    animation: glow 0.7s infinite alternate;
+    &::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      left: 1600px;
+      background-color: $circle-background-color;
+      border-radius: 50%;
+      animation: glow 0.7s infinite alternate;
 
-    @keyframes glow {
-      from {
-        box-shadow: 0 0 8px 2px $primary-color-strong;
-      }
-      to {
-        box-shadow: 0 0 8px 6px $primary-color-strong;
+      @keyframes glow {
+        from {
+          box-shadow: 0 0 8px 2px $primary-color-strong;
+        }
+        to {
+          box-shadow: 0 0 8px 6px $primary-color-strong;
+        }
       }
     }
-  }
 
-  &:hover::after {
-    cursor: pointer;
+    &:hover::after {
+      cursor: pointer;
+    }
   }
 }
+
 
 
 .history-container {
@@ -73,6 +79,7 @@ $history-container-border: 3px;
     .title {
       color: $title-text-color;
       font-size: small;
+      font-weight: bold;
     }
   }
 
@@ -86,6 +93,12 @@ $history-container-border: 3px;
 .top {
   top: calc(50% - #{$history-container-height} - 50px);
   left: 100px;  // auto-calculated value
+  transition: all 200ms ease;
+
+  &:hover {
+    box-shadow: 0 0 5px 2px $primary-color-strong;
+    cursor: pointer;
+  }
 
   // direction arrow
   &::before {
@@ -112,19 +125,20 @@ $history-container-border: 3px;
     transition: all 200ms ease;
     box-shadow: 0 0 2px 1px $primary-color-strong;
   }
-
   &:hover::after {
     box-shadow: 0 0 10px 3px $primary-color-strong;
-  }
-
-  &:hover {
-    cursor: pointer;
   }
 }
 
 .bottom {
   top: calc(50% + 50px);
   left: 200px;  // auto-calculated value
+  transition: all 200ms ease;
+
+  &:hover {
+    box-shadow: 0 0 5px 2px $primary-color-strong;
+    cursor: pointer;
+  }
 
   // direction arrow
   &::before {
@@ -154,10 +168,6 @@ $history-container-border: 3px;
   
   &:hover::after {
     box-shadow: 0 0 10px 3px $primary-color-strong;
-  }
-  
-  &:hover {
-    cursor: pointer;
   }
 }
 

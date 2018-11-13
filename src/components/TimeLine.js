@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import HorizontalScroll from 'react-scroll-horizontal';
 import './TimeLine.scss';
 
 class TimeLine extends Component {
   render() {
     return(
-      // <div className="timeline-wrap">
+      <HorizontalScroll>
+        <div className="timeline-wrapper">
         <div className="timeline">
           <div className="history-container top">
             <div className="history-head">
@@ -25,7 +27,8 @@ class TimeLine extends Component {
             </div>
           </div>
         </div>
-      // </div>
+        </div>
+      </HorizontalScroll>
     );
   }
 }
