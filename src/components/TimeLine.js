@@ -4,7 +4,7 @@ import './TimeLine.scss';
 class TimeLine extends Component {
   render() {
     return(
-      <div className="timeline-wrap">
+      // <div className="timeline-wrap">
         <div className="timeline">
           <div className="history-container top">
             <div className="history-head">
@@ -25,7 +25,7 @@ class TimeLine extends Component {
             </div>
           </div>
         </div>
-      </div>
+      // </div>
     );
   }
 }

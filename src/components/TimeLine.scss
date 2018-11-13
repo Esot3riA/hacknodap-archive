@@ -16,46 +16,41 @@ $history-container-border: 3px;
 }
 
 // element
-.timeline-wrap {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: inherit;
-  
-  .timeline {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    width: 80%;
-    height: 3px;
-    background: $primary-color;
-    box-shadow: 0 0 3px 1px $primary-color-strong;
+.timeline {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  width: 700px;  // dynamically change later
+  height: 3px;
+  background: $primary-color;
+  box-shadow: 0 0 3px 1px $primary-color-strong;
 
-    &::after {
-      content: '';
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      left: 80%;
-      background-color: $circle-background-color;
-      border-radius: 50%;
-      animation: glow 0.7s infinite alternate;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: -2px;
+    left: 695px;  // dynamically change later
+    background-color: $circle-background-color;
+    border-radius: 50%;
+    animation: glow 0.7s infinite alternate;
 
-      @keyframes glow {
-        from {
-          box-shadow: 0 0 8px 2px $primary-color-strong;
-        }
-        to {
-          box-shadow: 0 0 8px 6px $primary-color-strong;
-        }
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 8px 2px $primary-color-strong;
+      }
+      to {
+        box-shadow: 0 0 8px 6px $primary-color-strong;
       }
     }
+  }
 
-    &:hover::after {
-      cursor: pointer;
-    }
+  &:hover::after {
+    cursor: pointer;
   }
 }
+
 
 .history-container {
   position: absolute;
