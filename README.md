@@ -20,6 +20,7 @@
 * ~~magic number 투성이인 timeline scss refactoring~~
 * infinite scrolling in timeline
 * timeline end에 current time 표시하기
+* 각 activity에 유형(ex: 모임, 여행, ...)을 추가해서 다른 색으로 표시
 
 
 ## Useful sites
@@ -27,3 +28,4 @@
 * [CSSmatic](https://www.cssmatic.com/gradient-generator)
 * [CSS Timeline Examples](https://freefrontend.com/css-timelines/)
 * [W3C CSS Timeline](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_timeline)
+

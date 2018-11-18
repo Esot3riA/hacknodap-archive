@@ -1,4 +1,4 @@
-// common and customizable proprety
+// Common and customizable proprety
 $primary-color: #f8b500;
 $primary-color-light: #ffedbd;
 $primary-color-strong: orange;
@@ -24,7 +24,7 @@ $history-container-border: 3px;
   .timeline {
     display: flex;
     align-items: center;
-    width: 1500px;
+    width: 700px;
     height: 3px;
     margin: 0 100px;
     background: $primary-color;
@@ -35,7 +35,7 @@ $history-container-border: 3px;
       position: absolute;
       width: 8px;
       height: 8px;
-      left: 1600px;
+      left: 800px;
       background-color: $circle-background-color;
       border-radius: 50%;
       animation: glow 0.7s infinite alternate;
@@ -53,9 +53,23 @@ $history-container-border: 3px;
     &:hover::after {
       cursor: pointer;
     }
+    
+    .current-time {
+      position: relative;
+      left: 650px;
+      top: 30px;
+      box-shadow: inset 0px 0px 15px 3px #23395e;
+      background: linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989',GradientType=0);
+      background-color: #2e466e;
+      border-radius: 17px;
+      border: 1px solid #1f2f47;
+      color: #ffffff;
+      font-size: x-small;
+      text-decoration: none;
+    }
   }
 }
-
 
 
 .history-container {
