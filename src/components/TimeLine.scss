@@ -1,4 +1,4 @@
-// Common and customizable proprety
+// Common and customizable property
 $primary-color: #f8b500;
 $primary-color-light: #ffedbd;
 $primary-color-strong: orange;
@@ -58,10 +58,9 @@ $history-container-border: 3px;
       position: relative;
       left: 650px;
       top: 30px;
-      box-shadow: inset 0px 0px 15px 3px #23395e;
-      background: linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+      box-shadow: inset 0 0 15px 3px #23395e;
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989',GradientType=0);
-      background-color: #2e466e;
+      background: #2e466e linear-gradient(to bottom, #2e466e 5%, #415989 100%);
       border-radius: 17px;
       border: 1px solid #1f2f47;
       color: #ffffff;
@@ -120,7 +119,7 @@ $history-container-border: 3px;
     position: absolute;
     top: $history-container-height - $history-container-border;
     left: calc(#{$history-container-width} / 2 - 13px);
-    border: medium solid;
+    border-style: solid;
     border-width: 20px 10px 0 10px;
     border-color: $primary-color transparent transparent transparent;
   }
@@ -160,7 +159,7 @@ $history-container-border: 3px;
     position: absolute;
     top: -23px;
     left: calc(#{$history-container-width} / 2 - 13px);
-    border: medium solid;
+    border: solid;
     border-width: 0 10px 20px 10px;
     border-color: transparent transparent $primary-color transparent;
   }
@@ -187,15 +186,14 @@ $history-container-border: 3px;
 
 
 .picture-1 {
-  background-image: url("http://postfiles2.naver.net/20160227_289/dpdlrnsdla_14565634606003khLt_JPEG/1455490024422.jpeg?type=w2");
   height: 100%;
   background-size: cover;
-  background-repeat: no-repeat;
+  background: url("http://postfiles2.naver.net/20160227_289/dpdlrnsdla_14565634606003khLt_JPEG/1455490024422.jpeg?type=w2") no-repeat;
 }
 
 .picture-2 {
-  background-image: url("http://postfiles4.naver.net/20150205_243/dpdlrnsdla_1423129227795tPdMy_JPEG/IMG_20150205_183945.jpg?type=w2");
   height: 100%;
   background-size: cover;
-  background-repeat: no-repeat;
+  background: url("http://postfiles4.naver.net/20150205_243/dpdlrnsdla_1423129227795tPdMy_JPEG/IMG_20150205_183945.jpg?type=w2") no-repeat;
 }
+
