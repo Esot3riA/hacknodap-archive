@@ -6,7 +6,7 @@ class GridTable extends Component {
   
   render() {
     return (
-      <div className="gridtable">
+      <div className="grid-table">
         <div className="grid">
           <TimeLine />
         </div>
