@@ -26,9 +26,6 @@ class TimeLine extends Component {
                 <div className="picture-2"></div>
               </div>
             </div>
-            <div className="current-time">
-              2018.11.17 22:22:01
-            </div>
           </div>
         </div>
       </HorizontalScroll>
