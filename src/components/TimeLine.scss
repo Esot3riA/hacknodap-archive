@@ -173,13 +173,16 @@ $history-container-border: 3px;
 
 .picture-1 {
   height: 100%;
-  background-size: cover;
-  background: url("http://postfiles2.naver.net/20160227_289/dpdlrnsdla_14565634606003khLt_JPEG/1455490024422.jpeg?type=w2") no-repeat;
+  background-image: url("https://c-lj.gnst.jp/public/article/detail/a/00/00/a0000002/img/ko/a0000002_parts_57b692e981aa0.jpg?20181025165319");
+	background-size: cover;
+  background-repeat: space;
 }
 
 .picture-2 {
   height: 100%;
+  background-image: url("https://t1.daumcdn.net/cfile/tistory/2422BC4655B843D91E");
   background-size: cover;
-  background: url("http://postfiles4.naver.net/20150205_243/dpdlrnsdla_1423129227795tPdMy_JPEG/IMG_20150205_183945.jpg?type=w2") no-repeat;
+  background-repeat: space; 
+  
 }
 

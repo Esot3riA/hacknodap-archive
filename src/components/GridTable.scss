@@ -1,10 +1,11 @@
-.gridtable {
+.grid-table {
   flex: 1;
   background-color: #434343;
   background-image: linear-gradient(#434343, #282828);
   
   .grid {
-    background: transparent linear-gradient(
+    background-color: transparent;
+    background: linear-gradient(
                     0deg,
                     transparent 24%,
                     rgba(255, 255, 255, .05) 25%,
