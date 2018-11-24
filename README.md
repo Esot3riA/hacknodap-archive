@@ -21,6 +21,7 @@
 * infinite scrolling in timeline
 * timeline end에 current time 표시하기
 * 각 activity에 유형(ex: 모임, 여행, ...)을 추가해서 다른 색으로 표시
+* timeline에 연도별 spliter 추가, 배경화면 grid랑 안맞으면 우주 배경? 비슷하게 전환
 
 
 ## Useful sites

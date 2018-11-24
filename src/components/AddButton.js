@@ -7,22 +7,21 @@ import Button from '@material-ui/core/Button';
 const styles = theme => ({
   absolute: {
     position: 'absolute',
-    bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 8,
+    bottom: theme.spacing.unit * 4,
+    right: theme.spacing.unit * 4
   }
 });
 
 const AddButton = (props) => {
   const { classes } = props;
   return (
-    <Tooltip title="New Activity..." placement="top">
-      <Button
-        variant="fab"
-        color="primary"
-        className={classes.absolute}>
-        <AddIcon />
-      </Button>
-    </Tooltip>
+    <div className={classes.absolute}>
+      <Tooltip title="New Activity..." placement="top-end">
+        <Button variant="fab" color="secondary">
+          <AddIcon />
+        </Button>
+      </Tooltip>
+    </div>
   );
 }
 
