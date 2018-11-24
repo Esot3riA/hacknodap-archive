@@ -1,7 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+/hacknodap-archive/node_modules
+/hacknodap-archive-server/node_modules
 
 # testing
 /coverage

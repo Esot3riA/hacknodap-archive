@@ -1,0 +1,11 @@
+{
+  "name": "hacknodap-archive-server",
+  "version": "1.0.0",
+  "description": "RESTful Server of Hacknodap Archive.",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.3.13"
+  }
+}

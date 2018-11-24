@@ -8,7 +8,8 @@ const styles = theme => ({
   absolute: {
     position: 'absolute',
     bottom: theme.spacing.unit * 4,
-    right: theme.spacing.unit * 4
+    right: 0,
+    paddingRight: theme.spacing.unit * 4,
   }
 });
 
@@ -16,7 +17,7 @@ const AddButton = (props) => {
   const { classes } = props;
   return (
     <div className={classes.absolute}>
-      <Tooltip title="New Activity..." placement="top-end">
+      <Tooltip placement="top" title="New Activity...">
         <Button variant="fab" color="secondary">
           <AddIcon />
         </Button>
