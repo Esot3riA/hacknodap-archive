@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "RESTful Server of Hacknodap Archive.",
   "main": "index.js",
+  "scripts": {
+    "start": "node ./app.js"
+  },
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^5.3.13"
   }
