@@ -25,8 +25,8 @@ app.use(function(req, res, next) {
 });
 
 var port = process.env.PORT || 3001;
-// var Activity = require('./models/activity');
-// var router = require('./routes')(app, Activity);
+var Activity = require('./models/activity');
+var router = require('./routes')(app, Activity);
 
 var server = app.listen(port, function() {
   console.log("Express server has started on port " + port);
