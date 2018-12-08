@@ -23,6 +23,9 @@
 * 각 activity에 유형(ex: 모임, 여행, ...)을 추가해서 다른 색으로 표시
 * timeline에 연도별 spliter 추가, 배경화면 grid랑 안맞으면 우주 배경? 비슷하게 전환
 * RESTful Server에서 Image를 직접 노출시켜야 할지, 파일 시스템으로 관리할지 고민.
+* fixed length의 Timeline을 append하는 식으로 구현할 것.
+이 경우 history를 timeline 내부가 아닌 timeline wrapper에 absolute하게 짜야 함.
+timeline wrapper에 종속되도록(timeline과 history가 동등하도록) history의 구조 바꾸기.
 
 ## Useful sites
 
