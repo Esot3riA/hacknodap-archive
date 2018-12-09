@@ -93,34 +93,34 @@ const HistoryContainer = styled.div`
 				box-shadow: 0 0 10px 3px orange;
 			}
 	`};
-`;
+`
 
 const HistoryHead = styled.div`
 	height: 17%;
 	background-color: #f8b500;
 	padding: 3px 5px;
-`;
+`
 const Date = styled.div`
 	color: white;
 	font-size: small;
-`;
+`
 const Title = styled.div`
 	color: white;
 	font-size: small;
 	font-weight: bold;
-`;
+`
 
 const HistoryBody = styled.div`
 	height: 83%;
 	background-color: #ffedbd;
 	padding: 5px;
-`;
+`
 const PictureOne = styled.div`
 	height: 100%;
   background-image: url("https://c-lj.gnst.jp/public/article/detail/a/00/00/a0000002/img/ko/a0000002_parts_57b692e981aa0.jpg?20181025165319");
 	background-size: cover;
   background-repeat: space;
-`;
+`
 
 const History = ({location, date, title}) => {
 	return(

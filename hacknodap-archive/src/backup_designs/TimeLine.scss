@@ -5,12 +5,6 @@ $primary-color-strong: orange;
 $title-text-color: white;
 $circle-background-color: white;
 
-* {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
 // Elements
 .timeline-wrapper {
   display: flex;

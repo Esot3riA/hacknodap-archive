@@ -1,19 +1,46 @@
-import React, { Component } from 'react';
-import './GridTable.scss';
-import TimeLine from './TimeLine';
+import React from 'react';
+import Timeline from './Timeline';
+import styled from 'styled-components';
 
-class GridTable extends Component {
-  
-  render() {
-    return (
-      <div className="grid-table">
-        <div className="grid">
-          <TimeLine />
-        </div>
-      </div>
-    );
-  }
-  
+const Background = styled.div`
+  flex: 1;
+  background-color: #434343;
+  background-image: linear-gradient(#434343, #282828);
+`
+
+const Grid = styled.div`
+	background-color: transparent;
+	background: linear-gradient(
+									0deg,
+									transparent 24%,
+									rgba(255, 255, 255, .05) 25%,
+									rgba(255, 255, 255, .05) 26%,
+									transparent 27%,
+									transparent 74%,
+									rgba(255, 255, 255, .05) 75%,
+									rgba(255, 255, 255, .05) 76%,
+									transparent 77%, transparent),
+	linear-gradient(
+									90deg, transparent 24%,
+									rgba(255, 255, 255, .05) 25%,
+									rgba(255, 255, 255, .05) 26%,
+									transparent 27%,
+									transparent 74%,
+									rgba(255, 255, 255, .05) 75%,
+									rgba(255, 255, 255, .05) 76%,
+									transparent 77%, transparent);
+	background-size: 50px 50px;
+	height: 100%;
+`
+
+const GridTable = () => {
+	return(
+		<Background>
+			<Grid>
+				<Timeline />
+			</Grid>
+		</Background>
+	);
 }
 
 export default GridTable;
