@@ -49,7 +49,7 @@ $history-container-border: 3px;
 
 .top {
   top: calc(50% - #{$history-container-height} - 50px);
-  left: 100px;  // auto-calculated value
+  left: 100px;  // auto-calculated value (later)
   transition: all 200ms ease;
 
   &:hover {
@@ -80,7 +80,7 @@ $history-container-border: 3px;
     border: 4px solid $primary-color;
     border-radius: 50%;
     transition: all 200ms ease;
-    box-shadow: 0 0 1px 1px $primary-color-strong;
+    box-shadow: 0 0 2px 1px $primary-color-strong;
   }
   &:hover::after {
     box-shadow: 0 0 10px 3px $primary-color-strong;
@@ -89,7 +89,7 @@ $history-container-border: 3px;
 
 .bottom {
   top: calc(50% + 50px);
-  left: 200px;  // auto-calculated value
+  left: 200px;  // auto-calculated value (later)
   transition: all 200ms ease;
 
   &:hover {
