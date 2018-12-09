@@ -5,8 +5,7 @@ import AddButton from './components/AddButton';
 import grey from '@material-ui/core/colors/grey';
 import orange from '@material-ui/core/colors/orange';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { createGlobalStyle } from 'styled-components';
-import './App.scss';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 	* {
@@ -14,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 	}
-`;
+`
 
 const theme = createMuiTheme({
   typography: {
@@ -28,19 +27,25 @@ const theme = createMuiTheme({
       main: orange[500],
     },
   }
-});
+})
+
+const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <AppContainer>
 				<GlobalStyle/>
         <MuiThemeProvider theme={theme}>
           <MainAppBar />
           <GridTable />
           <AddButton />
         </MuiThemeProvider>
-      </div>
+      </AppContainer>
     );
   }
 }
