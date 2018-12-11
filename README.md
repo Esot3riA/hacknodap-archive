@@ -18,7 +18,8 @@
 * timeline에 연도별 spliter 추가
 * 배경화면 grid랑 안맞으면 우주 배경? 비슷하게 전환
 * RESTful Server에서 Image를 직접 노출시켜야 할지, 파일 시스템으로 관리할지 고민
-* Redux 도입, Temporary state default로 주고 동작 테스트
+* [Redux 도입](https://velopert.com/3365), Temporary state default로 주고 동작 테스트
+* 다 만들면 홍보해서 *커뮤니티에서 쓰세요~ GitHub에서 떠가면 됩니다~* 하기. 제일 좋은 건 완성형 서비스로 만드는 것인데..
 
 ## Useful Sites
 
