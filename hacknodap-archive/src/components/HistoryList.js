@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const HistoryListDiv = styled.div`
 	position: absolute;
-`
+`;
 
 const HistoryList = ({ historyData }) => {
 	const histories = historyData.map(historyInfo => (
@@ -21,6 +21,6 @@ const HistoryList = ({ historyData }) => {
 			{histories}
 		</HistoryListDiv>
 	);
-}
+};
 
 export default HistoryList;

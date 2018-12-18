@@ -8,7 +8,7 @@ const TimelineDiv = styled.div`
   flex-direction: column;
   justify-content: center;
 	height: 100%;
-`
+`;
 
 class Timeline extends Component {
 	
@@ -27,7 +27,7 @@ class Timeline extends Component {
 					title: '핵노답 아카이브 개발 중',
 			}
 		]
-	}
+	};
 	
 	render() {
 		const { historyData } = this.props;
