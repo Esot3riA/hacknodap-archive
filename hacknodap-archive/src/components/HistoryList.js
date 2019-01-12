@@ -6,8 +6,8 @@ const HistoryListDiv = styled.div`
 	position: absolute;
 `;
 
-const HistoryList = ({ historyData }) => {
-	const histories = historyData.map(historyInfo => (
+const HistoryList = ({ histories }) => {
+	const historyList = histories.map(historyInfo => (
 			<History
 				key={historyInfo.id}
 				location={historyInfo.location}
@@ -18,7 +18,7 @@ const HistoryList = ({ historyData }) => {
 	
 	return(
 		<HistoryListDiv>
-			{histories}
+			{historyList}
 		</HistoryListDiv>
 	);
 };

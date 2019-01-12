@@ -6,7 +6,7 @@ const Background = styled.div`
   flex: 1;
   background-color: #434343;
   background-image: linear-gradient(#434343, #282828);
-`
+`;
 
 const Grid = styled.div`
 	background-color: transparent;
@@ -31,10 +31,10 @@ const Grid = styled.div`
 									transparent 77%, transparent);
 	background-size: 50px 50px;
 	height: 100%;
-`
+`;
 
 const GridTable = () => {
-	return(
+	return (
 		<Background>
 			<Grid>
 				<Timeline />

@@ -13,7 +13,7 @@ const TimelineDiv = styled.div`
 class Timeline extends Component {
 	
 	static defaultProps = {
-		historyData: [
+		histories: [
 			{
 					id: 1,
 					location: 'top',
@@ -30,12 +30,12 @@ class Timeline extends Component {
 	};
 	
 	render() {
-		const { historyData } = this.props;
+		const { histories } = this.props;
 		return(
 			<TimelineDiv>
 				<Line />
 				<HistoryList
-					historyData={historyData}/>
+					histories={histories}/>
 			</TimelineDiv>
 		);
 	}
