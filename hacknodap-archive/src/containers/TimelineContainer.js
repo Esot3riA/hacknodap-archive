@@ -1,4 +1,4 @@
-import GridTable from '../components/GridTable';
+import Timeline from '../components/Timeline';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state) => ({
@@ -9,9 +9,9 @@ const mapDispatchToProps = (state) => ({
 	
 });
 
-const GridTableContainer = connect(
+const TimelineContainer = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(GridTable);
+)(Timeline);
 
-export default GridTableContainer;
+export default TimelineContainer;

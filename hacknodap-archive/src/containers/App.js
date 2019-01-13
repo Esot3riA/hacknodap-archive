@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MainAppBar from '../components/MainAppBar';
-import GridTableContainer from './GridTableContainer';
+import TimelineContainer from './TimelineContainer';
 import AddButton from '../components/AddButton';
 import AppWrapper from '../components/AppWrapper';
 import GlobalThemeProvider from '../components/GlobalThemeProvider';
@@ -13,7 +13,7 @@ class App extends Component {
 				<GlobalStyle />
 				{ /* <GlobalThemeProvider> */ }
           <MainAppBar />
-          <GridTableContainer />
+          <TimelineContainer />
           <AddButton />
 				{ /* </GlobalThemeProvider> */ }
       </AppWrapper>

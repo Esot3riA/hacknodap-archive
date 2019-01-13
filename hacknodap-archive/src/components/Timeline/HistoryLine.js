@@ -3,25 +3,25 @@ import Line from './Line';
 import HistoryList from './HistoryList';
 import styled from 'styled-components';
 
-const TimelineDiv = styled.div`
+const HistoryLineDiv = styled.div`
 	display: flex;
   flex-direction: column;
   justify-content: center;
 	height: 100%;
 `;
 
-const Timeline = ({ histories }) => {
+const HistoryLine = ({ histories }) => {
 	return (
-		<TimelineDiv>
+		<HistoryLineDiv>
 			<Line />
 			<HistoryList
 				histories={histories}/>
-		</TimelineDiv>
+		</HistoryLineDiv>
 	);
 };
 
-Timeline.defaultProps = {
+HistoryLine.defaultProps = {
 	histories: []
 }
 
-export default Timeline;
+export default HistoryLine;

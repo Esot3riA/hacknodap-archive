@@ -1,5 +1,5 @@
 import React from 'react';
-import Timeline from './Timeline';
+import HistoryLine from './HistoryLine';
 import styled from 'styled-components';
 
 const Background = styled.div`
@@ -33,14 +33,14 @@ const Grid = styled.div`
 	height: 100%;
 `;
 
-const GridTable = ({ histories }) => {
+const Timeline = ({ histories }) => {
 	return (
 		<Background>
 			<Grid>
-				<Timeline histories={histories} />
+				<HistoryLine histories={histories} />
 			</Grid>
 		</Background>
 	);
 }
 
-export default GridTable;
+export default Timeline;
