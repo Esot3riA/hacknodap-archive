@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Typography from '@material-ui/core/Typography';
 
-const MainAppBar = () => {
+const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar>
@@ -20,4 +20,4 @@ const MainAppBar = () => {
   );
 }
 
-export default MainAppBar;
+export default Header;

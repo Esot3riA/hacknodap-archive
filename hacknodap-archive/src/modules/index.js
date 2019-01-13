@@ -10,13 +10,11 @@ export const remove = createAction(REMOVE);
 const initialState = Map({
 	histories: List([
 		Map({
-			id: 1,
 			location: 'top',
 			date: '2018.11.01',
 			title: '핵노답 아카이브 개발 시작'
 		}),
 		Map({
-			id: 2,
 			location: 'bottom',
 			date: '2018.11.09',
 			title: '핵노답 아카이브 개발 중'
