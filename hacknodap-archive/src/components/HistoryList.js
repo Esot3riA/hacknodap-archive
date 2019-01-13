@@ -7,12 +7,11 @@ const HistoryListDiv = styled.div`
 `;
 
 const HistoryList = ({ histories }) => {
-	const historyList = histories.map(historyInfo => (
+	const historyList = histories.map((history, i) => (
 			<History
-				key={historyInfo.id}
-				location={historyInfo.location}
-				date={historyInfo.date}
-				title={historyInfo.title}
+				key={i}
+				index={i}
+				{...history.toJS()}
 			/>
 	));
 	

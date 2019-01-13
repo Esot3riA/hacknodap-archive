@@ -33,11 +33,11 @@ const Grid = styled.div`
 	height: 100%;
 `;
 
-const GridTable = () => {
+const GridTable = ({ histories }) => {
 	return (
 		<Background>
 			<Grid>
-				<Timeline />
+				<Timeline histories={histories} />
 			</Grid>
 		</Background>
 	);
