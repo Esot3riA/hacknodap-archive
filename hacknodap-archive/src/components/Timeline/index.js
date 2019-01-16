@@ -1,5 +1,5 @@
 import React from 'react';
-import HistoryLine from './HistoryLine';
+import HistoryLineWrapper from './HistoryLineWrapper';
 import styled from 'styled-components';
 
 const Background = styled.div`
@@ -37,7 +37,8 @@ const Timeline = ({ histories }) => {
 	return (
 		<Background>
 			<Grid>
-				<HistoryLine histories={histories} />
+				<HistoryLineWrapper
+					histories={histories} />
 			</Grid>
 		</Background>
 	);

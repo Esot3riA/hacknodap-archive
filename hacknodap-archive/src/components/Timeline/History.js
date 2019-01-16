@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const HistoryContainer = styled.div`
+const HistoryDiv = styled.div`
 	position: absolute;
   width: 300px;
   height: 250px;
@@ -10,10 +10,10 @@ const HistoryContainer = styled.div`
   border-radius: 5px;
 
   ${props =>
-    (props.location === 'top') && 
+    (props.location === 'left') && 
 		css`
-      top: calc(50% - 250px - 50px);
-			left: 100px;  // auto-calculated value (later)
+      top: 150px;	// auto-calculated value (later)
+			left: 60px;
 			transition: all 200ms ease;
 
 			&:hover {
@@ -25,11 +25,11 @@ const HistoryContainer = styled.div`
 			&::before {
 				content: '';
 				position: absolute;
-				top: calc(250px - 3px);
-				left: calc(300px / 2 - 13px);
+				top: 12px;
+				left: -23px;
 				border-style: solid;
-				border-width: 20px 10px 0 10px;
-				border-color: #f8b500 transparent transparent transparent;
+				border-width: 10px 20px 10px 0;
+				border-color: transparent #f8b500 transparent transparent;
 			}
 
 			// history circle
@@ -38,8 +38,8 @@ const HistoryContainer = styled.div`
 				position: absolute;
 				width: 15px;
 				height: 15px;
-				top: calc(250px + 50px - 13px);
-				left: calc(300px / 2 - 15px);
+				top: 10px;
+				left: -75px;
 				background-color: white;
 				border: 4px solid #f8b500;
 				border-radius: 50%;
@@ -52,10 +52,10 @@ const HistoryContainer = styled.div`
 	`};
 
 	${props =>
-		(props.location === 'bottom') &&
+		(props.location === 'right') &&
 		css`
-			top: calc(50% + 50px);
-			left: 200px;  // auto-calculated value (later)
+			top: 250px;
+			left: -360px;  // auto-calculated value (later)
 			transition: all 200ms ease;
 
 			&:hover {
@@ -67,11 +67,11 @@ const HistoryContainer = styled.div`
 			&::before {
 				content: '';
 				position: absolute;
-				top: -23px;
-				left: calc(300px / 2 - 13px);
-				border: solid;
-				border-width: 0 10px 20px 10px;
-				border-color: transparent transparent #f8b500 transparent;
+				top: 12px;
+				right: -23px;
+				border-style: solid;
+				border-width: 10px 0 10px 20px;
+				border-color: transparent transparent transparent #f8b500;
 			}
 
 			// history circle
@@ -80,8 +80,8 @@ const HistoryContainer = styled.div`
 				position: absolute;
 				width: 15px;
 				height: 15px;
-				top: -63px;
-				left: calc(300px / 2 - 15px);
+				top: 10px;
+				left: 346px;
 				background-color: white;
 				border: 4px solid #f8b500;
 				border-radius: 50%;
@@ -93,38 +93,38 @@ const HistoryContainer = styled.div`
 				box-shadow: 0 0 10px 3px orange;
 			}
 	`};
-`
+`;
 
 const HistoryHead = styled.div`
 	height: 17%;
 	background-color: #f8b500;
 	padding: 3px 5px;
-`
+`;
 const Date = styled.div`
 	color: white;
 	font-size: small;
-`
+`;
 const Title = styled.div`
 	color: white;
 	font-size: small;
 	font-weight: bold;
-`
+`;
 
 const HistoryBody = styled.div`
 	height: 83%;
 	background-color: #ffedbd;
 	padding: 5px;
-`
+`;
 const PictureOne = styled.div`
 	height: 100%;
   background-image: url("https://c-lj.gnst.jp/public/article/detail/a/00/00/a0000002/img/ko/a0000002_parts_57b692e981aa0.jpg?20181025165319");
 	background-size: cover;
   background-repeat: space;
-`
+`;
 
 const History = ({location, date, title}) => {
 	return(
-		<HistoryContainer location={location}>
+		<HistoryDiv location={location}>
 			<HistoryHead>
 				<Date>{date}</Date>
 				<Title>{title}</Title>
@@ -132,7 +132,7 @@ const History = ({location, date, title}) => {
 			<HistoryBody>
 				<PictureOne />
 			</HistoryBody>
-		</HistoryContainer>
+		</HistoryDiv>
 	);
 }
 
