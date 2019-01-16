@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
   absolute: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: theme.spacing.unit * 4,
     right: 0,
     paddingRight: theme.spacing.unit * 4,

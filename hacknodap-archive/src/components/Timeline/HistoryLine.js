@@ -13,7 +13,7 @@ const GlowLine = styled.div`
 	flex-direction: column;
 	align-items: center;
 	width: 3px;
-	height: 800px;
+	height: 1500px;
 	background: #f8b500;
 	box-shadow: 0 0 3px 1px orange;
 

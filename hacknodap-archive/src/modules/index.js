@@ -12,12 +12,14 @@ const initialState = Map({
 		Map({
 			location: 'left',
 			date: '2018.11.09',
-			title: '핵노답 아카이브 개발 중'
+			title: '핵노답 아카이브 개발 중',
+			imageURL: 'https://raw.githubusercontent.com/Esot3riA/hacknodap-archive/master/image1.jpg'
 		}),
 		Map({
 			location: 'right',
 			date: '2018.11.01',
-			title: '핵노답 아카이브 개발 시작'
+			title: '핵노답 아카이브 개발 시작',
+			imageURL: 'https://raw.githubusercontent.com/Esot3riA/hacknodap-archive/master/image2.jpg'
 		})
 	])
 });

@@ -115,22 +115,24 @@ const HistoryBody = styled.div`
 	background-color: #ffedbd;
 	padding: 5px;
 `;
-const PictureOne = styled.div`
+const Picture = styled.div`
 	height: 100%;
-  background-image: url("https://c-lj.gnst.jp/public/article/detail/a/00/00/a0000002/img/ko/a0000002_parts_57b692e981aa0.jpg?20181025165319");
+  background-image: url(${props => props.imageURL});
 	background-size: cover;
   background-repeat: space;
 `;
 
-const History = ({location, date, title}) => {
-	return(
-		<HistoryDiv location={location}>
+const History = ({ location, date, title, imageURL }) => {
+	return (
+		<HistoryDiv
+			location={location}>
 			<HistoryHead>
 				<Date>{date}</Date>
 				<Title>{title}</Title>
 			</HistoryHead>
 			<HistoryBody>
-				<PictureOne />
+				<Picture
+					imageURL={imageURL}/>
 			</HistoryBody>
 		</HistoryDiv>
 	);
