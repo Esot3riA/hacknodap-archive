@@ -15,7 +15,7 @@ const HistoryList = ({ histories }) => {
 			/>
 	));
 	
-	return(
+	return (
 		<HistoryListDiv>
 			{historyList}
 		</HistoryListDiv>

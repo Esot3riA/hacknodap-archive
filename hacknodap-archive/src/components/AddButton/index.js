@@ -1,29 +1,25 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import styled from 'styled-components';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 
-const styles = theme => ({
-  absolute: {
-    position: 'fixed',
-    bottom: theme.spacing.unit * 4,
-    right: 0,
-    paddingRight: theme.spacing.unit * 4,
-  }
-});
+const AddButtonDiv = styled.div`
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+`;
 
-const AddButton = (props) => {
-  const { classes } = props;
+const AddButton = () => {
   return (
-    <div className={classes.absolute}>
+    <AddButtonDiv>
       <Tooltip placement="top" title="New Activity...">
         <Button variant="fab" color="secondary">
           <AddIcon />
         </Button>
       </Tooltip>
-    </div>
+    </AddButtonDiv>
   );
-}
+};
 
-export default withStyles(styles)(AddButton);
+export default AddButton;
