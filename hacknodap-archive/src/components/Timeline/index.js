@@ -42,6 +42,6 @@ const Timeline = ({ histories }) => {
 			</Grid>
 		</Background>
 	);
-}
+};
 
 export default Timeline;

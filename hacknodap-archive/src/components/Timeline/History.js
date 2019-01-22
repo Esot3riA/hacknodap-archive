@@ -136,6 +136,6 @@ const History = ({ location, date, title, imageURL }) => {
 			</HistoryBody>
 		</HistoryDiv>
 	);
-}
+};
 
 export default History;

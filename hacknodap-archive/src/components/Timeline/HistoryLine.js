@@ -45,5 +45,6 @@ const HistoryLine = ({ histories }) => {
 					histories={histories}/>
 			</LineDiv>
 	);
-}
+};
+
 export default HistoryLine;
