@@ -3,11 +3,16 @@ import { Map, List } from 'immutable';
 
 const CREATE = 'timeline/CREATE';
 const REMOVE = 'timeline/REMOVE';
+const OPEN_ADD_DIALOG = 'addButton/OPEN_ADD_DIALOG';
+const CLOSE_ADD_DIALOG = 'addButton/CLOSE_ADD_DIALOG';
 
 export const create = createAction(CREATE);
 export const remove = createAction(REMOVE);
+export const openAddDialog = createAction(OPEN_ADD_DIALOG);
+export const closeAddDialog = createAction(CLOSE_ADD_DIALOG);
 
 const initialState = Map({
+	isAddDialogOpen: false,
 	histories: List([
 		Map({
 			location: 'left',
@@ -25,10 +30,16 @@ const initialState = Map({
 });
 
 export default handleActions({
-	[CREATE]: (state, action) => {
+	[CREATE]: (state) => {
 		return state;
 	},
-	[REMOVE]: (state, action) => {
+	[REMOVE]: (state) => {
 		return state;
+	},
+	[OPEN_ADD_DIALOG]: (state) => {
+		return state.set('isAddDialogOpen', true);
+	},
+	[CLOSE_ADD_DIALOG]: (state) => {
+		return state.set('isAddDialogOpen', false);
 	}
 }, initialState);

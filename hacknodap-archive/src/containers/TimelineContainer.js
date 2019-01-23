@@ -5,7 +5,7 @@ const mapStateToProps = (state) => ({
 	histories: state.get('histories')
 });
 
-const mapDispatchToProps = (state) => ({
+const mapDispatchToProps = () => ({
 	
 });
 

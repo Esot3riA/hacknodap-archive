@@ -10,16 +10,25 @@ const AddButtonDiv = styled.div`
   right: 20px;
 `;
 
-const AddButton = () => {
+const AddButton = ({ onOpen }) => {
   return (
     <AddButtonDiv>
-      <Tooltip placement="top" title="New Activity...">
-        <Button variant="fab" color="secondary">
+      <Tooltip
+        placement="top"
+        title="New Activity...">
+        <Button
+          variant="fab"
+          color="secondary"
+          onClick={onOpen}>
           <AddIcon />
         </Button>
       </Tooltip>
     </AddButtonDiv>
   );
+};
+
+AddButton.defaultProps = {
+  onOpen : () => console.warn('onOpen is not defined')
 };
 
 export default AddButton;
