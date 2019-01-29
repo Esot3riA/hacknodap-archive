@@ -28,18 +28,21 @@ const theme = createMuiTheme({
 
 class App extends Component {
   render() {
-    const { isAddDialogOpen, onOpen, onClose } = this.props;
+    const { isAddDialogOpen, newHistoryData, 
+           onOpen, onClose, onChangeNewHistoryDate } = this.props;
     return (
       <AppWrapper>
-				<GlobalStyle />
-				<MuiThemeProvider theme={theme}>
+	      <GlobalStyle />
+	      <MuiThemeProvider theme={theme}>
           <Header />
           <TimelineContainer />
           <AddButton onOpen={onOpen}/>
           <AddDialog
             open={isAddDialogOpen}
-            onClose={onClose}/>
-				</MuiThemeProvider>
+            onClose={onClose}
+            newHistoryData={newHistoryData}
+            onChangeDate={onChangeNewHistoryDate}/>
+	      </MuiThemeProvider>
       </AppWrapper>
     );
   }
@@ -47,11 +50,13 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   isAddDialogOpen: state.get('isAddDialogOpen'),
+  newHistoryData: state.get('newHistoryData'),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onOpen: () => dispatch(actions.openAddDialog()),
   onClose: () => dispatch(actions.closeAddDialog()),
+  onChangeNewHistoryDate: (newHistoryDate) => dispatch(actions.changeNewHistoryDate(newHistoryDate)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -6,7 +6,10 @@ import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const AddDialog = ({ open, onClose }) => {
+const AddDialog = ({ open, onClose, newHistoryData, onChangeDate }) => {
+  
+  const handleChangeDate = (e) => onChangeDate(e.target.value);
+  
   return (
     <Dialog
       aria-labelledby="add-history-dialog"
@@ -16,11 +19,16 @@ const AddDialog = ({ open, onClose }) => {
       <DialogContent>
         <TextField
           name="historyDate"
-          label="History Date (ex: 2019.01.17)"
+          type="date"
+          label="History Date"
+          defaultValue={newHistoryData.get('historyDate')}
           variant="outlined"
           fullWidth
           margin="normal"
-          autoFocus
+	        InputLabelProps={{
+          	shrink: true,
+        	}}
+          onChange={handleChangeDate}
         />
         <TextField
           name="historyTitle"

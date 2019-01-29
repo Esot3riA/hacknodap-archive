@@ -5,14 +5,21 @@ const CREATE = 'timeline/CREATE';
 const REMOVE = 'timeline/REMOVE';
 const OPEN_ADD_DIALOG = 'addButton/OPEN_ADD_DIALOG';
 const CLOSE_ADD_DIALOG = 'addButton/CLOSE_ADD_DIALOG';
+const CHANGE_NEW_HISTORYDATE = 'addDialog/CHANGE_NEW_HISTORYDATE';
 
 export const create = createAction(CREATE);
 export const remove = createAction(REMOVE);
 export const openAddDialog = createAction(OPEN_ADD_DIALOG);
 export const closeAddDialog = createAction(CLOSE_ADD_DIALOG);
+export const changeNewHistoryDate =
+      createAction(CHANGE_NEW_HISTORYDATE);  // newHistoryDate
 
 const initialState = Map({
 	isAddDialogOpen: false,
+  newHistoryData: Map({
+    // Make YYYY-MM-DD format
+    historyDate: new Date().toISOString().slice(0, 10)
+  }),
 	histories: List([
 		Map({
 			location: 'left',
@@ -41,5 +48,8 @@ export default handleActions({
 	},
 	[CLOSE_ADD_DIALOG]: (state) => {
 		return state.set('isAddDialogOpen', false);
-	}
+	},
+  [CHANGE_NEW_HISTORYDATE]: (state, action) => {
+    return state.setIn(['newHistoryData', 'historyDate'], action.payload);
+  }
 }, initialState);
