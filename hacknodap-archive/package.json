@@ -6,11 +6,11 @@
     "@material-ui/core": "^3.5.1",
     "@material-ui/icons": "^3.0.1",
     "immutable": "^3.8.2",
+    "material-ui-dropzone": "^2.2.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-redux": "^6.0.0",
     "react-scripts": "2.0.5",
-    "react-scroll-horizontal": "^1.5.1",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
     "styled-components": "^4.1.2"

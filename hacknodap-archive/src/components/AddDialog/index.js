@@ -5,6 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import ImageDropZone from './ImageDropZone';
 
 const AddDialog = ({ open, onClose, newHistoryData, onChangeDate }) => {
   
@@ -15,45 +16,35 @@ const AddDialog = ({ open, onClose, newHistoryData, onChangeDate }) => {
       aria-labelledby="add-history-dialog"
       open={open}
       onClose={onClose}>
-      <DialogTitle>Add New History...</DialogTitle>
+      <DialogTitle>새 히스토리 생성</DialogTitle>
       <DialogContent>
         <TextField
           name="historyDate"
           type="date"
-          label="History Date"
+          label="히스토리 날짜"
           defaultValue={newHistoryData.get('historyDate')}
-          variant="outlined"
-          fullWidth
-          margin="normal"
 	        InputLabelProps={{
           	shrink: true,
         	}}
+          margin="dense"
           onChange={handleChangeDate}
         />
         <TextField
           name="historyTitle"
-          label="History Title (ex: 핵노답 스키장 여행)"
-          variant="outlined"
+          label="히스토리 제목"
           fullWidth
-          margin="normal"
+          margin="dense"
         />
-        <TextField
-          name="historyContent"
-          label="History Content (ex: 스키장 여행을 갔다왓따. 근데 많이 다쳣따..)"
-          variant="outlined"
-          multiline
-          rows="10"
-          fullWidth
-        />
+        <ImageDropZone />
       </DialogContent>
       <DialogActions>
         <Button color="primary">
-          Add
+          NEXT
         </Button>
         <Button
           color="secondary"
           onClick={onClose}>
-          Cancel
+          CANCEL
         </Button>
       </DialogActions>
     </Dialog>

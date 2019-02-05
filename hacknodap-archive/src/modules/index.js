@@ -1,24 +1,27 @@
 import { createAction, handleActions } from 'redux-actions';
 import { Map, List } from 'immutable';
 
-const CREATE = 'timeline/CREATE';
-const REMOVE = 'timeline/REMOVE';
 const OPEN_ADD_DIALOG = 'addButton/OPEN_ADD_DIALOG';
 const CLOSE_ADD_DIALOG = 'addButton/CLOSE_ADD_DIALOG';
 const CHANGE_NEW_HISTORYDATE = 'addDialog/CHANGE_NEW_HISTORYDATE';
+const CHANGE_NEW_HISTORYIMAGE = 'addDialog/CHANGE_NEW_HISTORYIMAGE';
 
-export const create = createAction(CREATE);
-export const remove = createAction(REMOVE);
 export const openAddDialog = createAction(OPEN_ADD_DIALOG);
 export const closeAddDialog = createAction(CLOSE_ADD_DIALOG);
 export const changeNewHistoryDate =
       createAction(CHANGE_NEW_HISTORYDATE);  // newHistoryDate
+export const changeNewHistoryImage =
+      createAction(CHANGE_NEW_HISTORYIMAGE); // files
 
 const initialState = Map({
 	isAddDialogOpen: false,
   newHistoryData: Map({
     // Make YYYY-MM-DD format
-    historyDate: new Date().toISOString().slice(0, 10)
+    historyDate: new Date().toISOString().slice(0, 10),
+    historyTitle: '',
+    historyImages: List([
+      
+    ])
   }),
 	histories: List([
 		Map({
@@ -37,12 +40,6 @@ const initialState = Map({
 });
 
 export default handleActions({
-	[CREATE]: (state) => {
-		return state;
-	},
-	[REMOVE]: (state) => {
-		return state;
-	},
 	[OPEN_ADD_DIALOG]: (state) => {
 		return state.set('isAddDialogOpen', true);
 	},
@@ -51,5 +48,8 @@ export default handleActions({
 	},
   [CHANGE_NEW_HISTORYDATE]: (state, action) => {
     return state.setIn(['newHistoryData', 'historyDate'], action.payload);
+  },
+  [CHANGE_NEW_HISTORYIMAGE]: (state, action) => {
+    return state.setIn(['newHistoryData', 'historyImage'], action.payload);
   }
 }, initialState);
