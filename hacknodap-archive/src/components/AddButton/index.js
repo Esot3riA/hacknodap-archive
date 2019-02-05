@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 
 const AddButtonDiv = styled.div`
   position: fixed;
@@ -16,12 +16,9 @@ const AddButton = ({ onOpen }) => {
       <Tooltip
         placement="top"
         title="New Activity...">
-        <Button
-          variant="fab"
-          color="secondary"
-          onClick={onOpen}>
+        <Fab color="secondary" onClick={onOpen}>
           <AddIcon />
-        </Button>
+        </Fab>
       </Tooltip>
     </AddButtonDiv>
   );
