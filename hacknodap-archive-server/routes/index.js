@@ -32,26 +32,26 @@ module.exports = function(app, Activity) {
         return res.status(404).json({ error: 'activity not found' });
       
       if (req.body.created)
-				activity.created = req.body.created;
-			if (req.body.title)
-				activity.title = req.body.title;
-			if (req.body.imageURL)
-				activity.imageURL = req.body.imageURL;
-			
-			activity.save(function(err) {
-				if (err)
-					res.status(500).json({ error: 'failed to update' });
-				res.json({ message: 'todo updated' });
-			});
+        activity.created = req.body.created;
+      if (req.body.title)
+        activity.title = req.body.title;
+      if (req.body.imageURL)
+        activity.imageURL = req.body.imageURL;
+      
+      activity.save(function(err) {
+        if (err)
+          res.status(500).json({ error: 'failed to update' });
+        res.json({ message: 'todo updated' });
+      });
     });
   });
-	
-	app.delete('activities/:activity_id', function(req, res) {
-		Activity.remove({ _id: req.params.activity_id }, function(err, output) {
-			if (err)
-				return res.status(500).json({ error: 'database failure' });
-			res.status(204).end();
-		});
-	});
+  
+  app.delete('activities/:activity_id', function(req, res) {
+    Activity.remove({ _id: req.params.activity_id }, function(err, output) {
+      if (err)
+        return res.status(500).json({ error: 'database failure' });
+      res.status(204).end();
+    });
+  });
   
 };

@@ -16,9 +16,11 @@ const NewImageLabelDiv = styled.div`
   margin-bottom: 5px;
 `;
 
-const AddDialog = ({ open, onClose, newHistoryData, onChangeDate }) => {
+const AddDialog = ({ open, onClose, newHistoryData, 
+                    onChangeDate, onChangeTitle }) => {
   
   const handleChangeDate = (e) => onChangeDate(e.target.value);
+  const handleChangeTitle = (e) => onChangeTitle(e.target.value);
   
   return (
     <Dialog
@@ -43,8 +45,10 @@ const AddDialog = ({ open, onClose, newHistoryData, onChangeDate }) => {
         <TextField
           name="historyTitle"
           label="히스토리 제목"
+          defaultValue={newHistoryData.get('historyTitle')}
           fullWidth
-          margin="none"
+          margin="dense"
+          onChange={handleChangeTitle}
         />
         <NewImageDiv>
           <NewImageLabelDiv>

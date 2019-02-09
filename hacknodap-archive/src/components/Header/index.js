@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 const Header = () => {
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
       <Toolbar>
         <IconButton color="inherit" aria-label="Menu">
           <MenuIcon />

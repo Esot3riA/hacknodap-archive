@@ -4,12 +4,15 @@ import { Map, List } from 'immutable';
 const OPEN_ADD_DIALOG = 'addButton/OPEN_ADD_DIALOG';
 const CLOSE_ADD_DIALOG = 'addButton/CLOSE_ADD_DIALOG';
 const CHANGE_NEW_HISTORYDATE = 'addDialog/CHANGE_NEW_HISTORYDATE';
+const CHANGE_NEW_HISTORYTITLE = 'addDialog/CHANGE_NEW_HISTORYTITLE';
 const CHANGE_NEW_HISTORYIMAGE = 'addDialog/CHANGE_NEW_HISTORYIMAGE';
 
 export const openAddDialog = createAction(OPEN_ADD_DIALOG);
 export const closeAddDialog = createAction(CLOSE_ADD_DIALOG);
 export const changeNewHistoryDate =
       createAction(CHANGE_NEW_HISTORYDATE);  // newHistoryDate
+export const changeNewHistoryTitle =
+      createAction(CHANGE_NEW_HISTORYTITLE); // newHistoryTitle
 export const changeNewHistoryImage =
       createAction(CHANGE_NEW_HISTORYIMAGE); // files
 
@@ -48,6 +51,9 @@ export default handleActions({
 	},
   [CHANGE_NEW_HISTORYDATE]: (state, action) => {
     return state.setIn(['newHistoryData', 'historyDate'], action.payload);
+  },
+  [CHANGE_NEW_HISTORYTITLE]: (state, action) => {
+    return state.setIn(['newHistoryData', 'historyTitle'], action.payload);
   },
   [CHANGE_NEW_HISTORYIMAGE]: (state, action) => {
     return state.setIn(['newHistoryData', 'historyImage'], action.payload);

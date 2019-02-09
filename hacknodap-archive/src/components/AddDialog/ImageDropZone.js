@@ -23,7 +23,10 @@ class ImageDropZone extends Component {
   
   render() {
     return (
-      <DropzoneArea onChange={this.handleChangeImage} />
+      <DropzoneArea
+        dropzoneText="Select or drag-drop history pictures..."
+        filesLimit={10}
+        onChange={this.handleChangeImage} />
     );
   }
 }

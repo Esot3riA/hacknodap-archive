@@ -29,7 +29,8 @@ const theme = createMuiTheme({
 class App extends Component {
   render() {
     const { isAddDialogOpen, newHistoryData, 
-           onOpen, onClose, onChangeNewHistoryDate } = this.props;
+           onOpen, onClose, onChangeNewHistoryDate, 
+           onChangeNewHistoryTitle } = this.props;
     return (
       <AppWrapper>
 	      <GlobalStyle />
@@ -41,7 +42,8 @@ class App extends Component {
             open={isAddDialogOpen}
             onClose={onClose}
             newHistoryData={newHistoryData}
-            onChangeDate={onChangeNewHistoryDate}/>
+            onChangeDate={onChangeNewHistoryDate}
+            onChangeTitle={onChangeNewHistoryTitle} />
 	      </MuiThemeProvider>
       </AppWrapper>
     );
@@ -57,6 +59,7 @@ const mapDispatchToProps = (dispatch) => ({
   onOpen: () => dispatch(actions.openAddDialog()),
   onClose: () => dispatch(actions.closeAddDialog()),
   onChangeNewHistoryDate: (newHistoryDate) => dispatch(actions.changeNewHistoryDate(newHistoryDate)),
+  onChangeNewHistoryTitle: (newHistoryTitle) => dispatch(actions.changeNewHistoryTitle(newHistoryTitle)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
