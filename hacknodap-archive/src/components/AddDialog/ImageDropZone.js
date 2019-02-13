@@ -1,34 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { DropzoneArea } from 'material-ui-dropzone';
 import { List } from 'immutable';
 
-class ImageDropZone extends Component {
-  static defaultProps = {
-    onChangeNewImage: () => console.warn('onChangeNewImage is not defined')
-  };
-  state = {
-    files: []
-  };
+const ImageDropZone = ({ onChangeImage }) => {
   
-  handleChangeImage = (files) => {
-    this.setState({
-      files: files
-    });
-  };
-  handleSave = (files) => {
+  const handleChangeImage = (files) => {
     const newImages = List(files);
-    const { onChangeNewImage } = this.props;
-    onChangeNewImage(newImages);
+    onChangeImage(newImages);
   };
+  // const handleSave = (files) => {
+  // };
   
-  render() {
-    return (
-      <DropzoneArea
-        dropzoneText="Select or drag-drop history pictures..."
-        filesLimit={10}
-        onChange={this.handleChangeImage} />
-    );
-  }
+  return (
+    <DropzoneArea
+      acceptedFiles={['image/*']}
+      dropzoneText="Select or drag-drop history pictures..."
+      filesLimit={10}
+      onChange={handleChangeImage} />
+  );
+}
+
+ImageDropZone.defaultProps = {
+  onChangeImage: () => console.warn('onChangeImage is not defined')
 }
 
 export default ImageDropZone;

@@ -17,7 +17,7 @@ const NewImageLabelDiv = styled.div`
 `;
 
 const AddDialog = ({ open, onClose, newHistoryData, 
-                    onChangeDate, onChangeTitle }) => {
+                    onChangeDate, onChangeTitle, onChangeImage }) => {
   
   const handleChangeDate = (e) => onChangeDate(e.target.value);
   const handleChangeTitle = (e) => onChangeTitle(e.target.value);
@@ -56,7 +56,8 @@ const AddDialog = ({ open, onClose, newHistoryData,
               활동 사진
             </DialogContentText>
           </NewImageLabelDiv>
-          <ImageDropZone />
+          <ImageDropZone
+            onChangeImage={onChangeImage} />
         </NewImageDiv>
       </DialogContent>
       <DialogActions>

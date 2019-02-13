@@ -30,7 +30,7 @@ class App extends Component {
   render() {
     const { isAddDialogOpen, newHistoryData, 
            onOpen, onClose, onChangeNewHistoryDate, 
-           onChangeNewHistoryTitle } = this.props;
+           onChangeNewHistoryTitle, onChangeNewHistoryImage } = this.props;
     return (
       <AppWrapper>
 	      <GlobalStyle />
@@ -40,10 +40,11 @@ class App extends Component {
           <AddButton onOpen={onOpen}/>
           <AddDialog
             open={isAddDialogOpen}
-            onClose={onClose}
             newHistoryData={newHistoryData}
+            onClose={onClose}
             onChangeDate={onChangeNewHistoryDate}
-            onChangeTitle={onChangeNewHistoryTitle} />
+            onChangeTitle={onChangeNewHistoryTitle}
+            onChangeImage={onChangeNewHistoryImage} />
 	      </MuiThemeProvider>
       </AppWrapper>
     );
@@ -60,6 +61,7 @@ const mapDispatchToProps = (dispatch) => ({
   onClose: () => dispatch(actions.closeAddDialog()),
   onChangeNewHistoryDate: (newHistoryDate) => dispatch(actions.changeNewHistoryDate(newHistoryDate)),
   onChangeNewHistoryTitle: (newHistoryTitle) => dispatch(actions.changeNewHistoryTitle(newHistoryTitle)),
+  onChangeNewHistoryImage: (newHistoryImage) => dispatch(actions.changeNewHistoryImage(newHistoryImage)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

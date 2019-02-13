@@ -46,7 +46,7 @@ module.exports = function(app, Activity) {
     });
   });
   
-  app.delete('activities/:activity_id', function(req, res) {
+  app.delete('/activities/:activity_id', function(req, res) {
     Activity.remove({ _id: req.params.activity_id }, function(err, output) {
       if (err)
         return res.status(500).json({ error: 'database failure' });
