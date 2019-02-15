@@ -8,8 +8,6 @@ const ImageDropZone = ({ onChangeImage }) => {
     const newImages = List(files);
     onChangeImage(newImages);
   };
-  // const handleSave = (files) => {
-  // };
   
   return (
     <DropzoneArea
@@ -19,7 +17,6 @@ const ImageDropZone = ({ onChangeImage }) => {
       onChange={handleChangeImage} />
   );
 }
-
 ImageDropZone.defaultProps = {
   onChangeImage: () => console.warn('onChangeImage is not defined')
 }

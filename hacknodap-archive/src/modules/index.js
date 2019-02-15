@@ -1,11 +1,15 @@
 import { createAction, handleActions } from 'redux-actions';
 import { Map, List } from 'immutable';
+import axios from 'axios';
+
+const restAPIURL = 'https://hacknodap-archive-server.run.goorm.io';
 
 const OPEN_ADD_DIALOG = 'addButton/OPEN_ADD_DIALOG';
 const CLOSE_ADD_DIALOG = 'addButton/CLOSE_ADD_DIALOG';
 const CHANGE_NEW_HISTORYDATE = 'addDialog/CHANGE_NEW_HISTORYDATE';
 const CHANGE_NEW_HISTORYTITLE = 'addDialog/CHANGE_NEW_HISTORYTITLE';
 const CHANGE_NEW_HISTORYIMAGE = 'addDialog/CHANGE_NEW_HISTORYIMAGE';
+const ADD_NEW_HISTORY = 'addDialog/ADD_NEW_HISTORY';
 
 export const openAddDialog = createAction(OPEN_ADD_DIALOG);
 export const closeAddDialog = createAction(CLOSE_ADD_DIALOG);
@@ -15,6 +19,7 @@ export const changeNewHistoryTitle =
       createAction(CHANGE_NEW_HISTORYTITLE); // newHistoryTitle
 export const changeNewHistoryImage =
       createAction(CHANGE_NEW_HISTORYIMAGE); // files
+export const addNewHistory = createAction(ADD_NEW_HISTORY);
 
 const initialState = Map({
 	isAddDialogOpen: false,
@@ -22,9 +27,7 @@ const initialState = Map({
     // Make YYYY-MM-DD format
     historyDate: new Date().toISOString().slice(0, 10),
     historyTitle: '',
-    historyImages: List([
-      
-    ])
+    historyImages: List([])
   }),
 	histories: List([
 		Map({
@@ -56,6 +59,17 @@ export default handleActions({
     return state.setIn(['newHistoryData', 'historyTitle'], action.payload);
   },
   [CHANGE_NEW_HISTORYIMAGE]: (state, action) => {
-    return state.setIn(['newHistoryData', 'historyImage'], action.payload);
+    return state.setIn(['newHistoryData', 'historyImages'], action.payload);
+  },
+  [ADD_NEW_HISTORY]: (state) => {
+    const newHistoryData = state.get('newHistoryData');
+    const { historyDate, historyTitle, historyImages } = newHistoryData.toJS();
+    
+    axios.put(restAPIURL + '/history', {
+      date: historyDate,
+      title: historyTitle,
+      images: historyImages
+    }).then(response => console.log(response));
+    return state;
   }
 }, initialState);

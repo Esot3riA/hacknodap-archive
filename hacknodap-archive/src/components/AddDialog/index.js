@@ -17,7 +17,8 @@ const NewImageLabelDiv = styled.div`
 `;
 
 const AddDialog = ({ open, onClose, newHistoryData, 
-                    onChangeDate, onChangeTitle, onChangeImage }) => {
+                    onChangeDate, onChangeTitle, onChangeImage,
+                    onSubmit }) => {
   
   const handleChangeDate = (e) => onChangeDate(e.target.value);
   const handleChangeTitle = (e) => onChangeTitle(e.target.value);
@@ -61,7 +62,9 @@ const AddDialog = ({ open, onClose, newHistoryData,
         </NewImageDiv>
       </DialogContent>
       <DialogActions>
-        <Button color="primary">
+        <Button
+          color="primary"
+          onClick={onSubmit}>
           ADD
         </Button>
         <Button
