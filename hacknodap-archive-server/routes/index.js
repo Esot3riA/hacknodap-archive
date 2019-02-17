@@ -1,3 +1,6 @@
+var multer = require('multer');
+var upload = multer({ dest: 'images/' });
+
 module.exports = function(app, Activity) {
   
   app.get('/activities', function(req, res) {
@@ -8,20 +11,28 @@ module.exports = function(app, Activity) {
     });
   });
   
-  app.post('/activities', function(req, res) {
-    var activity = new Activity();
-    activity.created = req.body.created;
-    activity.title = req.body.title;
-    activity.imageURL = req.body.imageURL;
+  app.post('/histories', upload.single('images'), function(req, res) {
     
-    activity.save(function(err) {
-      if (err) {
-        console.error(err);
-        res.json({ result: 0 });
-        return;
-      }
-      res.json({ result: 1 });
-    });
+    // TODO : Debug request header to my macbook!
+    console.log(req.header(headerName));
+    console.log(req.body);
+    console.log(req.file);
+    res.json({ result: req.file });
+    
+    // var activity = new Activity();
+    // activity.created = req.body.created;
+    // activity.title = req.body.title;
+    // activity.imageURL = req.body.imageURL;
+    
+    // activity.save(function(err) {
+    //   if (err) {
+    //     console.error(err);
+    //     res.json({ result: 0 });
+    //     return;
+    //   }
+    //   res.json({ result: 1 });
+    // });
+    
   });
   
   app.put('/activities/:activity_id', function(req, res) {

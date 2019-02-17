@@ -64,12 +64,13 @@ export default handleActions({
   [ADD_NEW_HISTORY]: (state) => {
     const newHistoryData = state.get('newHistoryData');
     const { historyDate, historyTitle, historyImages } = newHistoryData.toJS();
+    const formData = new FormData();
+    formData.append('date', historyDate);
+    formData.append('title', historyTitle);
+    formData.append('images', historyImages);
     
-    axios.put(restAPIURL + '/history', {
-      date: historyDate,
-      title: historyTitle,
-      images: historyImages
-    }).then(response => console.log(response));
+    axios.post(restAPIURL + '/histories', formData)
+      .then(response => console.log(response));
     return state;
   }
 }, initialState);
