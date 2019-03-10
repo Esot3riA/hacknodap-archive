@@ -2,7 +2,7 @@ import { createAction, handleActions } from 'redux-actions';
 import { Map, List } from 'immutable';
 import axios from 'axios';
 
-const restAPIURL = 'https://hacknodap-archive-server.run.goorm.io';
+const restAPIURL = 'http://localhost:3001';
 
 const OPEN_ADD_DIALOG = 'addButton/OPEN_ADD_DIALOG';
 const CLOSE_ADD_DIALOG = 'addButton/CLOSE_ADD_DIALOG';
@@ -67,7 +67,7 @@ export default handleActions({
     const formData = new FormData();
     formData.append('date', historyDate);
     formData.append('title', historyTitle);
-    formData.append('images', historyImages);
+    historyImages.forEach(image => formData.append('image', image));
     
     axios.post(restAPIURL + '/histories', formData)
       .then(response => console.log(response));

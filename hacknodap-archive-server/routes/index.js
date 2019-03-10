@@ -11,28 +11,14 @@ module.exports = function(app, Activity) {
     });
   });
   
-  app.post('/histories', upload.single('images'), function(req, res) {
+  app.post('/histories', upload.array('image'), (req) => {
+    const date = req.body.date;
+    const title = req.body.title;
+    const images = req.files;
     
-    // TODO : Debug request header to my macbook!
-    console.log(req.header(headerName));
-    console.log(req.body);
-    console.log(req.file);
-    res.json({ result: req.file });
-    
-    // var activity = new Activity();
-    // activity.created = req.body.created;
-    // activity.title = req.body.title;
-    // activity.imageURL = req.body.imageURL;
-    
-    // activity.save(function(err) {
-    //   if (err) {
-    //     console.error(err);
-    //     res.json({ result: 0 });
-    //     return;
-    //   }
-    //   res.json({ result: 1 });
-    // });
-    
+    console.log(date);
+    console.log(title);
+    console.log(images);
   });
   
   app.put('/activities/:activity_id', function(req, res) {
@@ -58,7 +44,7 @@ module.exports = function(app, Activity) {
   });
   
   app.delete('/activities/:activity_id', function(req, res) {
-    Activity.remove({ _id: req.params.activity_id }, function(err, output) {
+    Activity.remove({ _id: req.params.activity_id }, function(err) {
       if (err)
         return res.status(500).json({ error: 'database failure' });
       res.status(204).end();
