@@ -13,6 +13,9 @@
 # webstorm resource
 /.idea
 
+# image file
+/hacknoodap-archive-server/images
+
 # misc
 .DS_Store
 .env.local

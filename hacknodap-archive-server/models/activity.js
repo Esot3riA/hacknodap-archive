@@ -2,9 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var activitySchema = new Schema({
-  created: Date,
+  date: Date,
   title: String,
-  imageURL: String
+  images: [String]
 });
 
 module.exports = mongoose.model('activity', activitySchema);

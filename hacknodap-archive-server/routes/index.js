@@ -11,14 +11,29 @@ module.exports = function(app, Activity) {
     });
   });
   
-  app.post('/histories', upload.array('image'), (req) => {
+  app.post('/histories', upload.array('image'), (req, res) => {
+  
     const date = req.body.date;
     const title = req.body.title;
-    const images = req.files;
+    const imageFiles = req.files;
+    let images = [];
+    imageFiles.forEach(imageFile => {
+      images.push(imageFile.path);
+    });
     
-    console.log(date);
-    console.log(title);
-    console.log(images);
+    const activity = new Activity();
+    activity.date = date;
+    activity.title = title;
+    activity.images = images;
+    
+    activity.save(err => {
+      if (err) {
+        console.error(err);
+        res.json({ result: 0 });
+        return;
+      }
+      res.json({ result: 1 });
+    });
   });
   
   app.put('/activities/:activity_id', function(req, res) {
