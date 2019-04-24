@@ -20,8 +20,8 @@ const AddDialog = ({ open, onClose, newHistoryData,
                     onChangeDate, onChangeTitle, onChangeImage,
                     onSubmit }) => {
   
-  const handleChangeDate = (e) => onChangeDate(e.target.value);
-  const handleChangeTitle = (e) => onChangeTitle(e.target.value);
+  const handleChangeDate = e => onChangeDate(e.target.value);
+  const handleChangeTitle = e => onChangeTitle(e.target.value);
   
   return (
     <Dialog

@@ -65,12 +65,20 @@ export default handleActions({
     const newHistoryData = state.get('newHistoryData');
     const { historyDate, historyTitle, historyImages } = newHistoryData.toJS();
     const formData = new FormData();
+    if (historyImages.length <= 0) {
+      alert('Please select a picture.');
+      return state;
+    }
+    
     formData.append('date', historyDate);
     formData.append('title', historyTitle);
     historyImages.forEach(image => formData.append('image', image));
-    
     axios.post(restAPIURL + '/histories', formData)
-      .then(response => console.log(response));
-    return state;
+      .then(response => {
+        console.log(response)
+        // TODO Reload histories, create snackbar alert.
+      });
+    
+    return state.set('isAddDialogOpen', false);
   }
 }, initialState);
