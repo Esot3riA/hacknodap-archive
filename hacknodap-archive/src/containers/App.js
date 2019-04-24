@@ -11,6 +11,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import { connect } from 'react-redux';
 import * as actions from '../modules';
+import AlertSnackBar from "../components/SnackBar/AlertSnackBar";
 
 const theme = createMuiTheme({
   typography: {
@@ -28,25 +29,30 @@ const theme = createMuiTheme({
 
 class App extends Component {
   render() {
-    const { isAddDialogOpen, newHistoryData, 
-           onOpen, onClose, onChangeNewHistoryDate, 
-           onChangeNewHistoryTitle, onChangeNewHistoryImage,
-           onAddNewHistory } = this.props;
+    const { isAddDialogOpen, isSnackBarOpen, snackBarMessage,
+          newHistoryData, onAddDialogOpen, onAddDialogClose, onSnackbarClose,
+          onChangeNewHistoryDate, onChangeNewHistoryTitle,
+          onChangeNewHistoryImage, onAddNewHistory } = this.props;
     return (
       <AppWrapper>
 	      <GlobalStyle />
 	      <MuiThemeProvider theme={theme}>
           <Header />
           <TimelineContainer />
-          <AddButton onOpen={onOpen}/>
+          <AddButton onOpen={onAddDialogOpen}/>
           <AddDialog
             open={isAddDialogOpen}
             newHistoryData={newHistoryData}
-            onClose={onClose}
+            onClose={onAddDialogClose}
             onChangeDate={onChangeNewHistoryDate}
             onChangeTitle={onChangeNewHistoryTitle}
             onChangeImage={onChangeNewHistoryImage}
             onSubmit={onAddNewHistory} />
+          <AlertSnackBar
+            open={isSnackBarOpen}
+            onClose={onSnackbarClose}
+            message={snackBarMessage}
+          />
 	      </MuiThemeProvider>
       </AppWrapper>
     );
@@ -55,12 +61,15 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   isAddDialogOpen: state.get('isAddDialogOpen'),
-  newHistoryData: state.get('newHistoryData'),
+  isSnackBarOpen: state.get('isSnackBarOpen'),
+  snackBarMessage: state.get('snackBarMessage'),
+  newHistoryData: state.get('newHistoryData')
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onOpen: () => dispatch(actions.openAddDialog()),
-  onClose: () => dispatch(actions.closeAddDialog()),
+  onAddDialogOpen: () => dispatch(actions.openAddDialog()),
+  onAddDialogClose: () => dispatch(actions.closeAddDialog()),
+  onSnackbarClose: () => dispatch(actions.closeSnackBar()),
   onChangeNewHistoryDate: (newHistoryDate) => dispatch(actions.changeNewHistoryDate(newHistoryDate)),
   onChangeNewHistoryTitle: (newHistoryTitle) => dispatch(actions.changeNewHistoryTitle(newHistoryTitle)),
   onChangeNewHistoryImage: (newHistoryImage) => dispatch(actions.changeNewHistoryImage(newHistoryImage)),
