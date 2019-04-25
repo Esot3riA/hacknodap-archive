@@ -11,7 +11,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import { connect } from 'react-redux';
 import * as actions from '../modules';
-import AlertSnackBar from "../components/SnackBar/AlertSnackBar";
+import InfoSnackBar from "../components/SnackBar/InfoSnackBar";
 
 const theme = createMuiTheme({
   typography: {
@@ -48,7 +48,7 @@ class App extends Component {
             onChangeTitle={onChangeNewHistoryTitle}
             onChangeImage={onChangeNewHistoryImage}
             onSubmit={onAddNewHistory} />
-          <AlertSnackBar
+          <InfoSnackBar
             open={isSnackBarOpen}
             onClose={onSnackbarClose}
             message={snackBarMessage}

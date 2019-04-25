@@ -73,8 +73,8 @@ export default handleActions({
     const { historyDate, historyTitle, historyImages } = newHistoryData.toJS();
     const formData = new FormData();
     if (historyImages.length <= 0) {
-      alert('Please select a picture.');
-      return state;
+      return state.set('snackBarMessage', 'Please select a picture.')
+        .set('isSnackBarOpen', true);
     }
     formData.append('date', historyDate);
     formData.append('title', historyTitle);
@@ -84,7 +84,7 @@ export default handleActions({
       .then(response => {
         console.log(response);
       });
-  
+    
     return state.set('snackBarMessage', 'Successfully uploaded.')
       .set('isSnackBarOpen', true)
       .set('isAddDialogOpen', false);

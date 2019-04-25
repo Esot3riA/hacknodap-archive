@@ -1,9 +1,11 @@
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar/index';
+import InfoIcon from '@material-ui/icons/Info';
 import IconButton from '@material-ui/core/IconButton/index';
 import CloseIcon from '@material-ui/icons/Close';
+import {SnackbarContent} from "@material-ui/core";
 
-const AlertSnackBar = ({ open, onClose, message }) => {
+const InfoSnackBar = ({ open, onClose, message }) => {
   return (
     <Snackbar
       anchorOrigin={{
@@ -23,8 +25,9 @@ const AlertSnackBar = ({ open, onClose, message }) => {
           <CloseIcon />
         </IconButton>
       ]}
-    />
+    >
+    </Snackbar>
   );
 };
 
-export default AlertSnackBar;
+export default InfoSnackBar;
