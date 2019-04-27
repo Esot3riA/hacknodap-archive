@@ -8,10 +8,13 @@ import TimelineContainer from './TimelineContainer';
 import grey from '@material-ui/core/colors/grey';
 import orange from '@material-ui/core/colors/orange';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import axios from 'axios';
 
 import { connect } from 'react-redux';
 import * as actions from '../modules';
 import InfoSnackBar from "../components/SnackBar/InfoSnackBar";
+
+const restAPIURL = 'http://localhost:3001';
 
 const theme = createMuiTheme({
   typography: {
@@ -73,7 +76,24 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeNewHistoryDate: (newHistoryDate) => dispatch(actions.changeNewHistoryDate(newHistoryDate)),
   onChangeNewHistoryTitle: (newHistoryTitle) => dispatch(actions.changeNewHistoryTitle(newHistoryTitle)),
   onChangeNewHistoryImage: (newHistoryImage) => dispatch(actions.changeNewHistoryImage(newHistoryImage)),
-  onAddNewHistory: () => dispatch(actions.addNewHistory()),
+  
+  onAddNewHistory: (newHistoryData) => {
+    const { historyDate, historyTitle, historyImages } = newHistoryData.toJS();
+    if (historyImages.length <= 0)
+      dispatch(actions.alertNoImage());
+    else {
+      const formData = new FormData();
+      formData.append('date', historyDate);
+      formData.append('title', historyTitle);
+      historyImages.forEach(image => formData.append('image', image));
+      
+      axios.post(restAPIURL + '/histories', formData)
+        .then(response => {
+          console.log(response);
+          dispatch(actions.successNewHistory());
+        });
+    }
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

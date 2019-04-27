@@ -1,8 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
 import { Map, List } from 'immutable';
-import axios from 'axios';
-
-const restAPIURL = 'http://localhost:3001';
 
 const OPEN_ADD_DIALOG = 'addButton/OPEN_ADD_DIALOG';
 const CLOSE_ADD_DIALOG = 'addButton/CLOSE_ADD_DIALOG';
@@ -10,7 +7,8 @@ const CLOSE_SNACKBAR = 'snackBar/CLOSE_SNACKBAR';
 const CHANGE_NEW_HISTORYDATE = 'addDialog/CHANGE_NEW_HISTORYDATE';
 const CHANGE_NEW_HISTORYTITLE = 'addDialog/CHANGE_NEW_HISTORYTITLE';
 const CHANGE_NEW_HISTORYIMAGE = 'addDialog/CHANGE_NEW_HISTORYIMAGE';
-const ADD_NEW_HISTORY = 'addDialog/ADD_NEW_HISTORY';
+const ALERT_NO_IMAGE = 'addDialog/ALERT_NO_IMAGE';
+const SUCCESS_NEW_HISTORY = 'addDialog/SUCCESS_NEW_HISTORY';
 
 export const openAddDialog = createAction(OPEN_ADD_DIALOG);
 export const closeAddDialog = createAction(CLOSE_ADD_DIALOG);
@@ -21,7 +19,8 @@ export const changeNewHistoryTitle =
       createAction(CHANGE_NEW_HISTORYTITLE); // @params newHistoryTitle
 export const changeNewHistoryImage =
       createAction(CHANGE_NEW_HISTORYIMAGE); // @params files
-export const addNewHistory = createAction(ADD_NEW_HISTORY);
+export const alertNoImage = createAction(ALERT_NO_IMAGE);
+export const successNewHistory = createAction(SUCCESS_NEW_HISTORY);
 
 const initialState = Map({
 	isAddDialogOpen: false,
@@ -70,23 +69,11 @@ export default handleActions({
   [CHANGE_NEW_HISTORYIMAGE]: (state, action) => {
     return state.setIn(['newHistoryData', 'historyImages'], action.payload);
   },
-  [ADD_NEW_HISTORY]: state => {
-    const newHistoryData = state.get('newHistoryData');
-    const { historyDate, historyTitle, historyImages } = newHistoryData.toJS();
-    const formData = new FormData();
-    if (historyImages.length <= 0) {
-      return state.set('snackBarMessage', 'Please select a picture.')
-        .set('isSnackBarOpen', true);
-    }
-    formData.append('date', historyDate);
-    formData.append('title', historyTitle);
-    historyImages.forEach(image => formData.append('image', image));
-    
-    axios.post(restAPIURL + '/histories', formData)
-      .then(response => {
-        console.log(response);
-      });
-    
+  [ALERT_NO_IMAGE]: state => {
+    return state.set('snackBarMessage', 'Please select a picture.')
+      .set('isSnackBarOpen', true);
+  },
+  [SUCCESS_NEW_HISTORY]: state => {
     return state.set('snackBarMessage', 'Successfully uploaded.')
       .set('isSnackBarOpen', true)
       .set('isAddDialogOpen', false);

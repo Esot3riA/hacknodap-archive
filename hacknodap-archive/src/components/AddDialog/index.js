@@ -22,6 +22,7 @@ const AddDialog = ({ open, onClose, newHistoryData,
   
   const handleChangeDate = e => onChangeDate(e.target.value);
   const handleChangeTitle = e => onChangeTitle(e.target.value);
+  const handleSubmit = () => onSubmit(newHistoryData);
   
   return (
     <Dialog
@@ -64,7 +65,7 @@ const AddDialog = ({ open, onClose, newHistoryData,
       <DialogActions>
         <Button
           color="primary"
-          onClick={onSubmit}>
+          onClick={handleSubmit}>
           ADD
         </Button>
         <Button
