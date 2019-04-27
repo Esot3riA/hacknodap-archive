@@ -8,11 +8,11 @@ const HistoryDiv = styled.div`
   background-color: #f8b500;
   border: 3px solid #f8b500;
   border-radius: 5px;
+  top: ${props => props.topDistance}px;
 
   ${props =>
-    (props.location === 'left') && 
+    (props.location === 'left') &&
 		css`
-      top: 150px;	// auto-calculated value (later)
 			left: 60px;
 			transition: all 200ms ease;
 
@@ -54,8 +54,7 @@ const HistoryDiv = styled.div`
 	${props =>
 		(props.location === 'right') &&
 		css`
-			top: 250px;
-			left: -360px;  // auto-calculated value (later)
+			left: -360px;
 			transition: all 200ms ease;
 
 			&:hover {
@@ -122,9 +121,10 @@ const Picture = styled.div`
   background-repeat: space;
 `;
 
-const History = ({ location, date, title, imageURL }) => {
+const History = ({ topDistance, location, date, title, imageURL }) => {
 	return (
 		<HistoryDiv
+			topDistance={topDistance}
 			location={location}>
 			<HistoryHead>
 				<Date>{date}</Date>

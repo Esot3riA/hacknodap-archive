@@ -35,12 +35,14 @@ const initialState = Map({
   }),
 	histories: List([
 		Map({
-			location: 'left',
-			date: '2018.11.09',
-			title: '핵노답 아카이브 개발 중',
-			imageURL: 'https://raw.githubusercontent.com/Esot3riA/hacknodap-archive/master/image1.jpg'
+      topDistance: 150,
+      location: 'left',
+      date: '2018.11.09',
+      title: '핵노답 아카이브 개발 중',
+      imageURL: 'https://raw.githubusercontent.com/Esot3riA/hacknodap-archive/master/image1.jpg'
 		}),
 		Map({
+      topDistance: 250,
 			location: 'right',
 			date: '2018.11.01',
 			title: '핵노답 아카이브 개발 시작',

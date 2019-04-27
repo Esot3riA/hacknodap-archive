@@ -19,6 +19,6 @@ const ImageDropZone = ({ onChangeImage }) => {
 }
 ImageDropZone.defaultProps = {
   onChangeImage: () => console.warn('onChangeImage is not defined')
-}
+};
 
 export default ImageDropZone;
