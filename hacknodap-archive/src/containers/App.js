@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import AddButton from '../components/AddButton';
 import AddDialog from '../components/AddDialog';
+import InfoSnackBar from "../components/SnackBar/InfoSnackBar";
 import AppWrapper from '../components/AppWrapper';
 import GlobalStyle from '../components/GlobalStyle';
 import TimelineContainer from './TimelineContainer';
 import grey from '@material-ui/core/colors/grey';
 import orange from '@material-ui/core/colors/orange';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import axios from 'axios';
 
+import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../modules';
-import InfoSnackBar from "../components/SnackBar/InfoSnackBar";
+import fromJS from 'immutable';
 
 const restAPIURL = 'http://localhost:3001';
 
@@ -77,6 +78,12 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeNewHistoryTitle: (newHistoryTitle) => dispatch(actions.changeNewHistoryTitle(newHistoryTitle)),
   onChangeNewHistoryImage: (newHistoryImage) => dispatch(actions.changeNewHistoryImage(newHistoryImage)),
   
+  reloadHistory: () => {
+    axios.get(restAPIURL + '/histories').then(response => {
+      const histories = fromJS(response.data);
+      dispatch(actions.reloadNewHistory(histories));
+    });
+  },
   onAddNewHistory: (newHistoryData) => {
     const { historyDate, historyTitle, historyImages } = newHistoryData.toJS();
     if (historyImages.length <= 0)
@@ -91,6 +98,7 @@ const mapDispatchToProps = (dispatch) => ({
         .then(response => {
           console.log(response);
           dispatch(actions.successNewHistory());
+          this.reloadHistory();
         });
     }
   }

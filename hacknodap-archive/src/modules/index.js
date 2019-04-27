@@ -9,6 +9,7 @@ const CHANGE_NEW_HISTORYTITLE = 'addDialog/CHANGE_NEW_HISTORYTITLE';
 const CHANGE_NEW_HISTORYIMAGE = 'addDialog/CHANGE_NEW_HISTORYIMAGE';
 const ALERT_NO_IMAGE = 'addDialog/ALERT_NO_IMAGE';
 const SUCCESS_NEW_HISTORY = 'addDialog/SUCCESS_NEW_HISTORY';
+const RELOAD_NEW_HISTRORY = 'addDialog/UPDATE_NEW_HISTORY';
 
 export const openAddDialog = createAction(OPEN_ADD_DIALOG);
 export const closeAddDialog = createAction(CLOSE_ADD_DIALOG);
@@ -21,6 +22,7 @@ export const changeNewHistoryImage =
       createAction(CHANGE_NEW_HISTORYIMAGE); // @params files
 export const alertNoImage = createAction(ALERT_NO_IMAGE);
 export const successNewHistory = createAction(SUCCESS_NEW_HISTORY);
+export const reloadNewHistory = createAction(RELOAD_NEW_HISTRORY);  // @params histoies
 
 const initialState = Map({
 	isAddDialogOpen: false,
@@ -77,5 +79,8 @@ export default handleActions({
     return state.set('snackBarMessage', 'Successfully uploaded.')
       .set('isSnackBarOpen', true)
       .set('isAddDialogOpen', false);
+  },
+  [RELOAD_NEW_HISTRORY]: (state, action) => {
+	  return state.set('histories', action.payload);
   }
 }, initialState);
