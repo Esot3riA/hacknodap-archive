@@ -14,7 +14,7 @@
 /.idea
 
 # image file
-/hacknodap-archive-server/images
+/hacknodap-archive-server/static/images
 
 # misc
 .DS_Store

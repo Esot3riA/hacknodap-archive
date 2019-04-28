@@ -98,7 +98,7 @@ const mapDispatchToProps = (dispatch) => ({
         .then(response => {
           console.log(response);
           dispatch(actions.successNewHistory());
-          this.reloadHistory();
+          // this.reloadHistory();
         });
     }
   }

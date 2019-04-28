@@ -1,18 +1,17 @@
 var multer = require('multer');
-var upload = multer({ dest: 'images/' });
+var upload = multer({ dest: 'static/images/' });
 
-module.exports = function(app, Activity) {
+module.exports = function(app, History) {
   
-  app.get('/activities', function(req, res) {
-    Activity.find({}).sort({ 'created': 1 }).exec(function(err, activities) {
+  app.get('/histories', (req, res) => {
+    History.find({}).sort({ 'date': 1 }).exec((err, histories) => {
       if (err)
         return res.status(500).send({ error: 'database failure' });
-      res.json(activities);
+      res.json(histories);
     });
   });
   
   app.post('/histories', upload.array('image'), (req, res) => {
-  
     const date = req.body.date;
     const title = req.body.title;
     const imageFiles = req.files;
@@ -21,12 +20,12 @@ module.exports = function(app, Activity) {
       images.push(imageFile.path);
     });
     
-    const activity = new Activity();
-    activity.date = date;
-    activity.title = title;
-    activity.images = images;
-    
-    activity.save(err => {
+    const history = new History();
+    history.date = date;
+    history.title = title;
+    history.images = images;
+  
+    history.save(err => {
       if (err) {
         console.error(err);
         res.json({ result: 0 });

@@ -1,7 +1,7 @@
 {
   "name": "hacknodap-archive-server",
   "version": "1.0.0",
-  "description": "RESTful Server of Hacknodap Archive.",
+  "description": "RESTful server of hacknodap-archive.",
   "main": "index.js",
   "scripts": {
     "start": "nodemon $NODE_DEBUG_OPTION ./app.js"

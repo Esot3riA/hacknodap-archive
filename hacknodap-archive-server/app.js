@@ -1,22 +1,24 @@
-var express    = require('express');
-var app        = express();
-var bodyParser = require('body-parser');
-var mongoose   = require('mongoose');
+
+const express    = require('express');
+const app        = express();
+const bodyParser = require('body-parser');
+const mongoose   = require('mongoose');
 
 // Configure mongoose and Connect to db.
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error);
 db.once('open', function() {
   console.log("Connected to mongo server.");
 });
-mongoose.connect('mongodb://localhost/archiveDB', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/historyDB', { useNewUrlParser: true });
 
 // Configure app to use bodyParser.
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.static('static'));
 
 // Handle CORS.
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "*");
   res.header("Access-Control-Allow-Headers", 
@@ -24,10 +26,10 @@ app.use(function(req, res, next) {
   next();
 });
 
-var port = process.env.PORT || 3001;
-var Activity = require('./models/activity');
-var router = require('./routes')(app, Activity);
+const port = process.env.PORT || 3001;
+const History = require('./models/history');
+const router = require('./routes')(app, History);
 
-var server = app.listen(port, function() {
+const server = app.listen(port, () => {
   console.log("Express server has started on port " + port);
 });
