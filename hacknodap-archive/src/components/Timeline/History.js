@@ -21,7 +21,7 @@ const HistoryDiv = styled.div`
 				cursor: pointer;
 			}
 
-			// direction arrow
+			// Direction arrow
 			&::before {
 				content: '';
 				position: absolute;
@@ -32,7 +32,7 @@ const HistoryDiv = styled.div`
 				border-color: transparent #f8b500 transparent transparent;
 			}
 
-			// history circle
+			// History circle
 			&::after {
 				content: '';
 				position: absolute;
@@ -62,7 +62,7 @@ const HistoryDiv = styled.div`
 				cursor: pointer;
 			}
 
-			// direction arrow
+			// Direction arrow
 			&::before {
 				content: '';
 				position: absolute;
@@ -73,7 +73,7 @@ const HistoryDiv = styled.div`
 				border-color: transparent transparent transparent #f8b500;
 			}
 
-			// history circle
+			// History circle
 			&::after {
 				content: '';
 				position: absolute;
@@ -132,7 +132,7 @@ const History = ({ topDistance, location, date, title, imageURL }) => {
 			</HistoryHead>
 			<HistoryBody>
 				<Picture
-					imageURL={imageURL}/>
+					imageURL={imageURL[0]}/>
 			</HistoryBody>
 		</HistoryDiv>
 	);

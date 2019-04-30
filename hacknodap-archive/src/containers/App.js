@@ -13,7 +13,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../modules';
-import fromJS from 'immutable';
+import { fromJS } from 'immutable';
 
 const restAPIURL = 'http://localhost:3001';
 

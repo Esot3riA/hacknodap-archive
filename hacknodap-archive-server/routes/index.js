@@ -15,16 +15,16 @@ module.exports = function(app, History) {
     const date = req.body.date;
     const title = req.body.title;
     const imageFiles = req.files;
-    let images = [];
+    let imageURL = [];
     imageFiles.forEach(imageFile => {
-      images.push(imageFile.path);
+      imageURL.push(imageFile.path);
     });
     
     const history = new History();
     history.date = date;
     history.title = title;
-    history.images = images;
-  
+    history.imageURL = imageURL;
+    
     history.save(err => {
       if (err) {
         console.error(err);

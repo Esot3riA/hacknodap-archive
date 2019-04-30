@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const historySchema = new Schema({
   date: Date,
   title: String,
-  images: [String]
+  imageURL: [String]
 });
 
 module.exports = mongoose.model('history', historySchema);
