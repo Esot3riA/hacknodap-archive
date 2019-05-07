@@ -17,7 +17,9 @@ module.exports = function(app, History) {
     const imageFiles = req.files;
     let imageURL = [];
     imageFiles.forEach(imageFile => {
-      imageURL.push(imageFile.path);
+      const imagePath = imageFile.path;
+      const imageUrlPath = imagePath.substring(imagePath.indexOf('/'));
+      imageURL.push(imageUrlPath);
     });
     
     const history = new History();
@@ -35,6 +37,7 @@ module.exports = function(app, History) {
     });
   });
   
+  // Old codes
   app.put('/activities/:activity_id', function(req, res) {
     Activity.findById(req.params.activity_id, function(err, activity) {
       if (err)
