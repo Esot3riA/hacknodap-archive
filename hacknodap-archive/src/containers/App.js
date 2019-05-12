@@ -32,6 +32,12 @@ const theme = createMuiTheme({
 });
 
 class App extends Component {
+  
+  componentDidMount() {
+    const { reloadHistory } = this.props;
+    reloadHistory();
+  }
+  
   render() {
     const { isAddDialogOpen, isSnackBarOpen, snackBarMessage,
           newHistoryData, onAddDialogOpen, onAddDialogClose, onSnackbarClose,
@@ -98,7 +104,7 @@ const mapDispatchToProps = (dispatch) => ({
         .then(response => {
           console.log(response);
           dispatch(actions.successNewHistory());
-          // this.reloadHistory();
+          this.props.reloadHistory();
         });
     }
   }

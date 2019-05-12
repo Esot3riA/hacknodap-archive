@@ -4,9 +4,21 @@ var upload = multer({ dest: 'static/images/' });
 module.exports = function(app, History) {
   
   app.get('/histories', (req, res) => {
-    History.find({}).sort({ 'date': 1 }).exec((err, histories) => {
+    History.find({}, {
+      "_id": false,
+      "imageURL": true,
+      "date": true,
+      "title": true
+    }).sort({ 'date': 1 }).exec((err, historyModels) => {
       if (err)
         return res.status(500).send({ error: 'database failure' });
+      
+      // Format data string yyyy-MM-dd
+      let histories = JSON.parse(JSON.stringify(historyModels));
+      histories.forEach(history => {
+        history.date = history.date.slice(0, 10);
+      });
+      
       res.json(histories);
     });
   });
