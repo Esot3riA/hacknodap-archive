@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Properties } from '../../config/properties';
 
 const HistoryDiv = styled.div`
 	position: absolute;
@@ -116,7 +117,7 @@ const HistoryBody = styled.div`
 `;
 const Picture = styled.div`
 	height: 100%;
-  background-image: url(${props => props.imageURL});
+  background-image: url(${props => props.restAPIURL + props.imageURL});
 	background-size: cover;
   background-repeat: space;
 `;
@@ -132,7 +133,8 @@ const History = ({ topDistance, location, date, title, imageURL }) => {
 			</HistoryHead>
 			<HistoryBody>
 				<Picture
-					imageURL={imageURL[0]}/>
+					imageURL={imageURL[0]}
+					restAPIURL={Properties.restAPIURL}/>
 			</HistoryBody>
 		</HistoryDiv>
 	);

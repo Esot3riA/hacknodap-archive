@@ -14,8 +14,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import * as actions from '../modules';
 import { fromJS } from 'immutable';
-
-const restAPIURL = 'http://localhost:3001';
+import { Properties } from '../config/properties';
 
 const theme = createMuiTheme({
   typography: {
@@ -85,7 +84,7 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeNewHistoryImage: (newHistoryImage) => dispatch(actions.changeNewHistoryImage(newHistoryImage)),
   
   reloadHistory: () => {
-    axios.get(restAPIURL + '/histories').then(response => {
+    axios.get(Properties.restAPIURL + '/histories').then(response => {
       const histories = fromJS(response.data);
       dispatch(actions.reloadNewHistory(histories));
     });
@@ -100,7 +99,7 @@ const mapDispatchToProps = (dispatch) => ({
       formData.append('title', historyTitle);
       historyImages.forEach(image => formData.append('image', image));
       
-      axios.post(restAPIURL + '/histories', formData)
+      axios.post(Properties.restAPIURL + '/histories', formData)
         .then(response => {
           console.log(response);
           dispatch(actions.successNewHistory());
