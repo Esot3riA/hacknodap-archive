@@ -32,16 +32,41 @@ const theme = createMuiTheme({
 
 class App extends Component {
   
+  handleReload = () => {
+    const { onReloadHistory } = this.props;
+    axios.get(Properties.restAPIURL + '/histories').then(response => {
+      const histories = fromJS(response.data);
+      onReloadHistory(histories);
+    });
+  };
+  handleAddNewHistory = (newHistoryData) => {
+    const { onAlertNoImage, onAlertAddNewHistory } = this.props;
+    const { historyDate, historyTitle, historyImages } = newHistoryData.toJS();
+    if (historyImages.length <= 0)
+      onAlertNoImage();
+    else {
+      const formData = new FormData();
+      formData.append('date', historyDate);
+      formData.append('title', historyTitle);
+      historyImages.forEach(image => formData.append('image', image));
+      
+      axios.post(Properties.restAPIURL + '/histories', formData)
+        .then(() => {
+          onAlertAddNewHistory();
+          this.handleReload();
+        });
+    }
+  };
+  
   componentDidMount() {
-    const { reloadHistory } = this.props;
-    reloadHistory();
-  }
+    this.handleReload();
+  };
   
   render() {
     const { isAddDialogOpen, isSnackBarOpen, snackBarMessage,
           newHistoryData, onAddDialogOpen, onAddDialogClose, onSnackbarClose,
           onChangeNewHistoryDate, onChangeNewHistoryTitle,
-          onChangeNewHistoryImage, onAddNewHistory } = this.props;
+          onChangeNewHistoryImage } = this.props;
     return (
       <AppWrapper>
 	      <GlobalStyle />
@@ -56,7 +81,7 @@ class App extends Component {
             onChangeDate={onChangeNewHistoryDate}
             onChangeTitle={onChangeNewHistoryTitle}
             onChangeImage={onChangeNewHistoryImage}
-            onSubmit={onAddNewHistory} />
+            onSubmit={this.handleAddNewHistory} />
           <InfoSnackBar
             open={isSnackBarOpen}
             onClose={onSnackbarClose}
@@ -82,31 +107,9 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeNewHistoryDate: (newHistoryDate) => dispatch(actions.changeNewHistoryDate(newHistoryDate)),
   onChangeNewHistoryTitle: (newHistoryTitle) => dispatch(actions.changeNewHistoryTitle(newHistoryTitle)),
   onChangeNewHistoryImage: (newHistoryImage) => dispatch(actions.changeNewHistoryImage(newHistoryImage)),
-  
-  reloadHistory: () => {
-    axios.get(Properties.restAPIURL + '/histories').then(response => {
-      const histories = fromJS(response.data);
-      dispatch(actions.reloadNewHistory(histories));
-    });
-  },
-  onAddNewHistory: (newHistoryData) => {
-    const { historyDate, historyTitle, historyImages } = newHistoryData.toJS();
-    if (historyImages.length <= 0)
-      dispatch(actions.alertNoImage());
-    else {
-      const formData = new FormData();
-      formData.append('date', historyDate);
-      formData.append('title', historyTitle);
-      historyImages.forEach(image => formData.append('image', image));
-      
-      axios.post(Properties.restAPIURL + '/histories', formData)
-        .then(response => {
-          console.log(response);
-          dispatch(actions.successNewHistory());
-          this.props.reloadHistory();
-        });
-    }
-  }
+  onReloadHistory: (histories) => dispatch(actions.reloadHistory(histories)),
+  onAlertNoImage: () => dispatch(actions.alertNoImage()),
+  onAlertAddNewHistory: () => dispatch(actions.alertAddNewHistory()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
