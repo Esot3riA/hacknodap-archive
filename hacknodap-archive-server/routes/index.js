@@ -9,7 +9,7 @@ module.exports = function(app, History) {
       "imageURL": true,
       "date": true,
       "title": true
-    }).sort({ 'date': 1 }).exec((err, historyModels) => {
+    }).sort({ 'date': -1 }).exec((err, historyModels) => {
       if (err)
         return res.status(500).send({ error: 'database failure' });
       

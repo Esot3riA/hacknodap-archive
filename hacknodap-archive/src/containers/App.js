@@ -15,6 +15,7 @@ import { connect } from 'react-redux';
 import * as actions from '../modules';
 import { fromJS } from 'immutable';
 import { Properties } from '../config/properties';
+import positionHistory from '../utils/HistoryPositioner';
 
 const theme = createMuiTheme({
   typography: {
@@ -35,7 +36,7 @@ class App extends Component {
   handleReload = () => {
     const { onReloadHistory } = this.props;
     axios.get(Properties.restAPIURL + '/histories').then(response => {
-      const histories = fromJS(response.data);
+      const histories = fromJS(positionHistory(response.data));
       onReloadHistory(histories);
     });
   };
@@ -49,7 +50,6 @@ class App extends Component {
       formData.append('date', historyDate);
       formData.append('title', historyTitle);
       historyImages.forEach(image => formData.append('image', image));
-      
       axios.post(Properties.restAPIURL + '/histories', formData)
         .then(() => {
           onAlertAddNewHistory();
