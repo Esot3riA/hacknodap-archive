@@ -12,11 +12,12 @@ const ImageDropZone = ({ onChangeImage }) => {
   return (
     <DropzoneArea
       acceptedFiles={['image/*']}
-      dropzoneText="Select or drag-drop history pictures..."
+      dropzoneText="Select or Drag-Drop history pictures..."
       filesLimit={10}
       onChange={handleChangeImage} />
   );
-}
+};
+
 ImageDropZone.defaultProps = {
   onChangeImage: () => console.warn('onChangeImage is not defined')
 };

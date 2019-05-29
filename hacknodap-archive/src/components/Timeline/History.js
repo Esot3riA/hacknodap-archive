@@ -10,7 +10,7 @@ const HistoryDiv = styled.div`
   border: 3px solid #f8b500;
   border-radius: 5px;
   top: ${props => props.topDistance}px;
-
+	
   ${props =>
     (props.location === 'left') &&
 		css`
@@ -122,11 +122,17 @@ const Picture = styled.div`
   background-repeat: space;
 `;
 
-const History = ({ topDistance, location, date, title, imageURL }) => {
+const History = ({ onOpen, topDistance, location, date, title, imageURL }) => {
+	const handleClick = () => {
+		onOpen();
+	};
+	
 	return (
 		<HistoryDiv
 			topDistance={topDistance}
-			location={location}>
+			location={location}
+			onClick={handleClick}
+			>
 			<HistoryHead>
 				<Date>{date}</Date>
 				<Title>{title}</Title>

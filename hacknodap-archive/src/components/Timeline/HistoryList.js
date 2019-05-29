@@ -6,11 +6,12 @@ const HistoryListDiv = styled.div`
 	position: absolute;
 `;
 
-const HistoryList = ({ histories }) => {
+const HistoryList = ({ histories, onOpen }) => {
 	const historyList = histories.map((history, i) => (
 			<History
 				key={i}
 				index={i}
+				onOpen={onOpen}
 				{...history.toJS()}
 			/>
 	));

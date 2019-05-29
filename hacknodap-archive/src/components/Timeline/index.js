@@ -33,12 +33,13 @@ const Grid = styled.div`
 	height: 100%;
 `;
 
-const Timeline = ({ histories }) => {
+const Timeline = ({ histories, onOpenHistoryDialog }) => {
 	return (
 		<Background>
 			<Grid>
 				<HistoryLineWrapper
-					histories={histories} />
+					histories={histories}
+					onOpen={onOpenHistoryDialog} />
 			</Grid>
 		</Background>
 	);

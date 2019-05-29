@@ -37,12 +37,13 @@ const GlowLine = styled.div`
 	}
 `;
 
-const HistoryLine = ({ histories }) => {
+const HistoryLine = ({ histories, onOpen }) => {
 	return (
 			<LineDiv>
 				<GlowLine />
 				<HistoryList
-					histories={histories}/>
+					histories={histories}
+					onOpen={onOpen} />
 			</LineDiv>
 	);
 };

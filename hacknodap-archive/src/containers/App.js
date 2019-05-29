@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../components/Header';
 import AddButton from '../components/AddButton';
 import AddDialog from '../components/AddDialog';
+import HistoryDialog from '../components/HistoryDialog';
 import InfoSnackBar from "../components/SnackBar/InfoSnackBar";
 import AppWrapper from '../components/AppWrapper';
 import GlobalStyle from '../components/GlobalStyle';
@@ -63,8 +64,10 @@ class App extends Component {
   };
   
   render() {
-    const { isAddDialogOpen, isSnackBarOpen, snackBarMessage,
-          newHistoryData, onAddDialogOpen, onAddDialogClose, onSnackbarClose,
+    const { isAddDialogOpen, isHistoryDialogOpen, isSnackBarOpen,
+          snackBarMessage, newHistoryData, historyDialogData,
+          onOpenAddDialog, onCloseAddDialog,
+          onCloseHistoryDialog, onCloseSnackbar,
           onChangeNewHistoryDate, onChangeNewHistoryTitle,
           onChangeNewHistoryImage } = this.props;
     return (
@@ -73,20 +76,26 @@ class App extends Component {
 	      <MuiThemeProvider theme={theme}>
           <Header />
           <TimelineContainer />
-          <AddButton onOpen={onAddDialogOpen}/>
+          <AddButton onOpen={onOpenAddDialog}/>
           <AddDialog
             open={isAddDialogOpen}
             newHistoryData={newHistoryData}
-            onClose={onAddDialogClose}
+            onClose={onCloseAddDialog}
             onChangeDate={onChangeNewHistoryDate}
             onChangeTitle={onChangeNewHistoryTitle}
             onChangeImage={onChangeNewHistoryImage}
             onSubmit={this.handleAddNewHistory} />
           <InfoSnackBar
             open={isSnackBarOpen}
-            onClose={onSnackbarClose}
+            onClose={onCloseSnackbar}
             message={snackBarMessage}
           />
+          <HistoryDialog
+            open={isHistoryDialogOpen}
+            onClose={onCloseHistoryDialog}
+            history={historyDialogData}
+          />
+          
 	      </MuiThemeProvider>
       </AppWrapper>
     );
@@ -95,15 +104,18 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
   isAddDialogOpen: state.get('isAddDialogOpen'),
+  isHistoryDialogOpen: state.get('isHistoryDialogOpen'),
   isSnackBarOpen: state.get('isSnackBarOpen'),
   snackBarMessage: state.get('snackBarMessage'),
-  newHistoryData: state.get('newHistoryData')
+  newHistoryData: state.get('newHistoryData'),
+  historyDialogData: state.get('historyDialogData')
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onAddDialogOpen: () => dispatch(actions.openAddDialog()),
-  onAddDialogClose: () => dispatch(actions.closeAddDialog()),
-  onSnackbarClose: () => dispatch(actions.closeSnackBar()),
+  onOpenAddDialog: () => dispatch(actions.openAddDialog()),
+  onCloseAddDialog: () => dispatch(actions.closeAddDialog()),
+  onCloseHistoryDialog: () => dispatch(actions.closeHistoryDialog()),
+  onCloseSnackbar: () => dispatch(actions.closeSnackBar()),
   onChangeNewHistoryDate: (newHistoryDate) => dispatch(actions.changeNewHistoryDate(newHistoryDate)),
   onChangeNewHistoryTitle: (newHistoryTitle) => dispatch(actions.changeNewHistoryTitle(newHistoryTitle)),
   onChangeNewHistoryImage: (newHistoryImage) => dispatch(actions.changeNewHistoryImage(newHistoryImage)),
