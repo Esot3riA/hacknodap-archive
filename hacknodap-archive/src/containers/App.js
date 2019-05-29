@@ -41,6 +41,7 @@ class App extends Component {
       onReloadHistory(histories);
     });
   };
+  
   handleAddNewHistory = (newHistoryData) => {
     const { onAlertNoImage, onAlertAddNewHistory } = this.props;
     const { historyDate, historyTitle, historyImages } = newHistoryData.toJS();

@@ -46,6 +46,7 @@ const initialState = Map({
   }),
 	histories: List([
 		// Map({
+    //   _id: 0,
     //   topDistance: 150,
     //   location: 'left',
     //   date: '2018.11.09',

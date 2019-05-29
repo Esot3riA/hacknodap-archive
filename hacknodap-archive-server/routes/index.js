@@ -5,7 +5,7 @@ module.exports = function(app, History) {
   
   app.get('/histories', (req, res) => {
     History.find({}, {
-      "_id": false,
+      "_id": true,
       "imageURL": true,
       "date": true,
       "title": true

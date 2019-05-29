@@ -122,9 +122,11 @@ const Picture = styled.div`
   background-repeat: space;
 `;
 
-const History = ({ onOpen, topDistance, location, date, title, imageURL }) => {
+const History = ({ onClickHistory, _id, topDistance, location,
+									 date, title, imageURL }) => {
+	
 	const handleClick = () => {
-		onOpen();
+		onClickHistory(_id);
 	};
 	
 	return (
