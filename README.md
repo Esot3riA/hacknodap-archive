@@ -13,11 +13,11 @@
 ## Todo
 
 * timeline end에 current time 표시하기
-* 각 activity에 유형(ex: 모임, 여행, ...)을 추가해서 다른 색으로 표시
+* 각 history에 유형(ex: 모임, 여행, ...)을 추가해서 다른 색으로 표시
 * timeline에 연도별 spliter 추가
-* RESTful Server에서 Image를 직접 노출시켜야 할지, 파일 시스템으로 관리할지 고민
-* AddDialog 완성하기
-* 다 만들면 홍보해서 *커뮤니티에서 쓰세요~ GitHub에서 떠가면 됩니다~* 하기. 제일 좋은 건 완성형 서비스로 만드는 것인데..
+* 메인 화면의 history 부분의 오른쪽 하단에 사진 몇 개가 업로드 되어 있는지 표시
+* ~~RESTful Server에서 Image를 직접 노출시켜야 할지, 파일 시스템으로 관리할지 고민~~
+* ~~AddDialog 완성하기~~
 
 ## Useful Sites
 

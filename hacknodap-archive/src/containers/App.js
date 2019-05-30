@@ -52,7 +52,7 @@ class App extends Component {
       formData.append('date', historyDate);
       formData.append('title', historyTitle);
       historyImages.forEach(image => formData.append('image', image));
-      axios.post(Properties.restAPIURL + '/histories', formData)
+      axios.post(Properties.restAPIURL + '/history', formData)
         .then(() => {
           onAlertAddNewHistory();
           this.handleReload();

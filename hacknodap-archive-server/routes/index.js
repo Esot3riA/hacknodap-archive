@@ -4,26 +4,35 @@ var upload = multer({ dest: 'static/images/' });
 module.exports = function(app, History) {
   
   app.get('/histories', (req, res) => {
-    History.find({}, {
-      "_id": true,
-      "imageURL": true,
-      "date": true,
-      "title": true
-    }).sort({ 'date': -1 }).exec((err, historyModels) => {
-      if (err)
-        return res.status(500).send({ error: 'database failure' });
-      
-      // Format data string yyyy-MM-dd
-      let histories = JSON.parse(JSON.stringify(historyModels));
-      histories.forEach(history => {
-        history.date = history.date.slice(0, 10);
-      });
-      
+    History.find({}, '_id imageURL date title')
+      .sort({ 'date': -1 })
+      .exec((err, rawHistories) => {
+        if (err)
+          return res.status(500).send({ error: 'database failure' });
+        
+        // Format data string yyyy-MM-dd
+        let histories = JSON.parse(JSON.stringify(rawHistories));
+        histories.forEach(history => {
+          history.date = history.date.slice(0, 10);
+        });
       res.json(histories);
     });
   });
   
-  app.post('/histories', upload.array('image'), (req, res) => {
+  app.get('/history/:history_id', (req, res) => {
+    History.findById(req.params.history_id, '_id imageURL date title', (err, rawHistory) => {
+      if (err)
+        return res.status(500).json({ error: 'database failure' });
+      if (!rawHistory)
+        return res.status(404).json({ error: 'history not found' });
+      
+      let history = JSON.parse(JSON.stringify(rawHistory));
+      history.date = history.date.slice(0, 10);
+      res.json(history);
+    });
+  });
+  
+  app.post('/history', upload.array('image'), (req, res) => {
     const date = req.body.date;
     const title = req.body.title;
     const imageFiles = req.files;
