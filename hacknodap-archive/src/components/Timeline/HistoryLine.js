@@ -40,7 +40,6 @@ const GlowLine = styled.div`
 		background-color: white;
 		border-radius: 50%;
 		animation: glow 0.7s infinite alternate;
-
 		@keyframes glow {
 			from {
 				box-shadow: 0 0 8px 2px orange;
@@ -54,13 +53,13 @@ const GlowLine = styled.div`
 
 const HistoryLine = ({ histories, currentTime, onClickHistory }) => {
 	return (
-			<LineDiv>
-				<GlowLine
-					currentTime={currentTime} />
-				<HistoryList
-					histories={histories}
-					onClickHistory={onClickHistory} />
-			</LineDiv>
+		<LineDiv>
+			<GlowLine
+				currentTime={currentTime} />
+			<HistoryList
+				histories={histories}
+				onClickHistory={onClickHistory} />
+		</LineDiv>
 	);
 };
 
