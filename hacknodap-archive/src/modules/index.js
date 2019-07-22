@@ -13,6 +13,7 @@ const RELOAD_HISTRORY = 'addDialog/RELOAD_HISTORY';
 const OPEN_HISTORY_DIALOG = 'historyDialog/OPEN_HISTORY_DIALOG';
 const CLOSE_HISTORY_DIALOG = 'historyDialog/CLOSE_HISTORY_DIALOG';
 const LOAD_HISTORY_DIALOG = 'historyDialog/LOAD_HISTORY_DIALOG';
+const ALERT_REMOVE_HISTORY = 'historyDialog/ALERT_REMOVE_HISTORY';
 
 export const openAddDialog = createAction(OPEN_ADD_DIALOG);
 export const closeAddDialog = createAction(CLOSE_ADD_DIALOG);
@@ -29,6 +30,7 @@ export const reloadHistory = createAction(RELOAD_HISTRORY);  // @params historie
 export const openHistoryDialog = createAction(OPEN_HISTORY_DIALOG);
 export const closeHistoryDialog = createAction(CLOSE_HISTORY_DIALOG);
 export const loadHistoryDialog = createAction(LOAD_HISTORY_DIALOG);
+export const alertRemoveHistory = createAction(ALERT_REMOVE_HISTORY);
 
 const initialState = Map({
 	isAddDialogOpen: false,
@@ -100,5 +102,9 @@ export default handleActions({
   },
   [LOAD_HISTORY_DIALOG]: (state, action) => {
 	  return state.set('historyDialogData', action.payload);
+  },
+  [ALERT_REMOVE_HISTORY]: state => {
+	  return state.set('snackBarMessage', 'Successfully deleted.')
+      .set('isSnackBarOpen', true);
   }
 }, initialState);

@@ -60,6 +60,15 @@ class App extends Component {
     }
   };
   
+  handleRemoveHistory = (_id) => {
+    const { onAlertRemoveHistory } = this.props;
+    axios.delete(Properties.restAPIURL + '/history/' + _id)
+      .then(() => {
+        onAlertRemoveHistory();
+        this.handleReload();
+      });
+  };
+  
   componentDidMount() {
     this.handleReload();
   };
@@ -94,9 +103,9 @@ class App extends Component {
           <HistoryDialog
             open={isHistoryDialogOpen}
             onClose={onCloseHistoryDialog}
+            onRemove={this.handleRemoveHistory}
             history={historyDialogData}
           />
-          
 	      </MuiThemeProvider>
       </AppWrapper>
     );
@@ -123,6 +132,7 @@ const mapDispatchToProps = (dispatch) => ({
   onReloadHistory: (histories) => dispatch(actions.reloadHistory(histories)),
   onAlertNoImage: () => dispatch(actions.alertNoImage()),
   onAlertAddNewHistory: () => dispatch(actions.alertAddNewHistory()),
+  onAlertRemoveHistory: () => dispatch(actions.alertRemoveHistory())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

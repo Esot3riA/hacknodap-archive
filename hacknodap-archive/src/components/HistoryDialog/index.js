@@ -17,15 +17,20 @@ const Picture = styled.div`
   margin: 20px 0;
 `;
 
-const HistoryDialog = ({ open, onClose, history }) => {
+const HistoryDialog = ({ open, onClose, onRemove, history }) => {
   const title = history.get('title');
   const imageURLs = history.get('imageURL').toJS();
   const PictureList = imageURLs.map(
-    (imageURL) => (
+    (imageURL, i) => (
       <Picture
+        key={i}
         restAPIURL={Properties.restAPIURL}
         imageURL={imageURL} />)
   );
+  
+  const handleRemove = () => {
+    onRemove(history.get('_id'));
+  };
   
   return (
     <Dialog
@@ -41,6 +46,9 @@ const HistoryDialog = ({ open, onClose, history }) => {
       <DialogActions>
         <Button onClick={onClose} color="primary">
           Ok
+        </Button>
+        <Button onClick={handleRemove} color="secondary">
+          Remove
         </Button>
       </DialogActions>
     </Dialog>
