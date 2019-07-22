@@ -58,6 +58,14 @@ module.exports = function(app, History) {
     });
   });
   
+  app.delete('/history/:history_id', (req, res) => {
+    History.deleteOne({ _id: req.params.history_id }, err => {
+      if (err)
+        return res.status(500).json({ error: 'database failure' });
+      res.status(204).end();
+    });
+  });
+  
   // Old codes
   app.put('/activities/:activity_id', function(req, res) {
     Activity.findById(req.params.activity_id, function(err, activity) {

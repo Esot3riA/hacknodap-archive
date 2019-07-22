@@ -105,6 +105,7 @@ export default handleActions({
   },
   [ALERT_REMOVE_HISTORY]: state => {
 	  return state.set('snackBarMessage', 'Successfully deleted.')
-      .set('isSnackBarOpen', true);
+      .set('isSnackBarOpen', true)
+      .set('isHistoryDialogOpen', false);
   }
 }, initialState);
