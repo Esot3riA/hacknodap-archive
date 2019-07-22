@@ -16,12 +16,13 @@ const BottomPadding = styled.div`
 	height: 150px;
 `;
 
-const HistoryLineWrapper = ({ histories, onClickHistory }) => {
+const HistoryLineWrapper = ({ histories, currentTime, onClickHistory }) => {
 	return (
 		<HistoryLineWrapperDiv>
 			<TopPadding />
 			<HistoryLine
 				histories={histories}
+				currentTime={currentTime}
 				onClickHistory={onClickHistory} />
 			<BottomPadding />
 		</HistoryLineWrapperDiv>

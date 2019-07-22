@@ -33,12 +33,13 @@ const Grid = styled.div`
 	height: 100%;
 `;
 
-const Timeline = ({ histories, onClickHistory }) => {
+const Timeline = ({ histories, currentTime, onClickHistory }) => {
 	return (
 		<Background>
 			<Grid>
 				<HistoryLineWrapper
 					histories={histories}
+					currentTime={currentTime}
 					onClickHistory={onClickHistory} />
 			</Grid>
 		</Background>

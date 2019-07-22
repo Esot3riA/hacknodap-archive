@@ -132,7 +132,7 @@ const mapDispatchToProps = (dispatch) => ({
   onReloadHistory: (histories) => dispatch(actions.reloadHistory(histories)),
   onAlertNoImage: () => dispatch(actions.alertNoImage()),
   onAlertAddNewHistory: () => dispatch(actions.alertAddNewHistory()),
-  onAlertRemoveHistory: () => dispatch(actions.alertRemoveHistory())
+  onAlertRemoveHistory: () => dispatch(actions.alertRemoveHistory()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

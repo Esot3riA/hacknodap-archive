@@ -8,6 +8,11 @@ import { fromJS } from 'immutable';
 
 class TimelineContainer extends Component {
 	
+	componentDidMount() {
+		const { onReloadCurrentTime } = this.props;
+		setInterval(onReloadCurrentTime, 1000);
+	}
+	
 	handleClickHistory = (_id) => {
 		const { onOpenHistoryDialog, loadHistoryDialog } = this.props;
 		onOpenHistoryDialog();
@@ -18,22 +23,25 @@ class TimelineContainer extends Component {
 	};
 	
 	render() {
-		const { histories } = this.props;
+		const { histories, currentTime } = this.props;
 		return (
 			<Timeline
 				histories={histories}
+				currentTime={currentTime}
 				onClickHistory={this.handleClickHistory} />
 		);
 	}
 }
 
 const mapStateToProps = (state) => ({
+	currentTime: state.get('currentTime'),
 	histories: state.get('histories')
 });
 
 const mapDispatchToProps = (dispatch) => ({
 	onOpenHistoryDialog: () => dispatch(actions.openHistoryDialog()),
-	loadHistoryDialog: (history) => dispatch(actions.loadHistoryDialog(history))
+	loadHistoryDialog: (history) => dispatch(actions.loadHistoryDialog(history)),
+	onReloadCurrentTime: () => dispatch(actions.reloadCurrentTime())
 });
 
 export default connect(

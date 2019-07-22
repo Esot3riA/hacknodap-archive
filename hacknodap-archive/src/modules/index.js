@@ -14,6 +14,7 @@ const OPEN_HISTORY_DIALOG = 'historyDialog/OPEN_HISTORY_DIALOG';
 const CLOSE_HISTORY_DIALOG = 'historyDialog/CLOSE_HISTORY_DIALOG';
 const LOAD_HISTORY_DIALOG = 'historyDialog/LOAD_HISTORY_DIALOG';
 const ALERT_REMOVE_HISTORY = 'historyDialog/ALERT_REMOVE_HISTORY';
+const RELOAD_CURRENT_TIME = 'timeline/RELOAD_CURRENT_TIME';
 
 export const openAddDialog = createAction(OPEN_ADD_DIALOG);
 export const closeAddDialog = createAction(CLOSE_ADD_DIALOG);
@@ -31,8 +32,10 @@ export const openHistoryDialog = createAction(OPEN_HISTORY_DIALOG);
 export const closeHistoryDialog = createAction(CLOSE_HISTORY_DIALOG);
 export const loadHistoryDialog = createAction(LOAD_HISTORY_DIALOG);
 export const alertRemoveHistory = createAction(ALERT_REMOVE_HISTORY);
+export const reloadCurrentTime = createAction(RELOAD_CURRENT_TIME);
 
 const initialState = Map({
+  currentTime: '2019-07-22 13:00:01',
 	isAddDialogOpen: false,
   isHistoryDialogOpen: false,
   isSnackBarOpen: false,
@@ -107,5 +110,11 @@ export default handleActions({
 	  return state.set('snackBarMessage', 'Successfully deleted.')
       .set('isSnackBarOpen', true)
       .set('isHistoryDialogOpen', false);
+  },
+  [RELOAD_CURRENT_TIME]: state => {
+	  let date = new Date();
+	  let dateString = date.toISOString().substr(0, 10)
+      + ' ' + date.toTimeString().substr(0, 8);
+	  return state.set('currentTime', dateString);
   }
 }, initialState);
