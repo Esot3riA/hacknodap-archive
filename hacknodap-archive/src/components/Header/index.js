@@ -11,7 +11,7 @@ const ButtonDiv = styled.div`
   margin-left: auto;
 `;
 
-const Header = () => {
+const Header = ({ onOpen }) => {
   return (
     <AppBar position="fixed">
       <Toolbar>
@@ -22,7 +22,10 @@ const Header = () => {
           Hacknodap Archive
         </Typography>
         <ButtonDiv>
-          <Button variant="contained" color="secondary">Login</Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={onOpen}>Login</Button>
         </ButtonDiv>
       </Toolbar>
     </AppBar>

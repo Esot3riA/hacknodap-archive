@@ -1,6 +1,8 @@
 import { createAction, handleActions } from 'redux-actions';
 import { Map, List } from 'immutable';
 
+const OPEN_LOGIN_DIALOG = 'loginDialog/OPEN_LOGIN_DIALOG';
+const CLOSE_LOGIN_DIALOG = 'loginDialog/CLOSE_LOGIN_DIALOG';
 const OPEN_ADD_DIALOG = 'addButton/OPEN_ADD_DIALOG';
 const CLOSE_ADD_DIALOG = 'addButton/CLOSE_ADD_DIALOG';
 const CLOSE_SNACKBAR = 'snackBar/CLOSE_SNACKBAR';
@@ -16,6 +18,8 @@ const LOAD_HISTORY_DIALOG = 'historyDialog/LOAD_HISTORY_DIALOG';
 const ALERT_REMOVE_HISTORY = 'historyDialog/ALERT_REMOVE_HISTORY';
 const RELOAD_CURRENT_TIME = 'timeline/RELOAD_CURRENT_TIME';
 
+export const openLoginDialog = createAction(OPEN_LOGIN_DIALOG);
+export const closeLoginDialog = createAction(CLOSE_LOGIN_DIALOG);
 export const openAddDialog = createAction(OPEN_ADD_DIALOG);
 export const closeAddDialog = createAction(CLOSE_ADD_DIALOG);
 export const closeSnackBar = createAction(CLOSE_SNACKBAR);
@@ -36,6 +40,7 @@ export const reloadCurrentTime = createAction(RELOAD_CURRENT_TIME);
 
 const initialState = Map({
   currentTime: '2019-07-22 13:00:01',
+  isLoginDialogOpen: false,
 	isAddDialogOpen: false,
   isHistoryDialogOpen: false,
   isSnackBarOpen: false,
@@ -67,6 +72,12 @@ const initialState = Map({
 });
 
 export default handleActions({
+  [OPEN_LOGIN_DIALOG]: state => {
+    return state.set('isLoginDialogOpen', true);
+  },
+  [CLOSE_LOGIN_DIALOG]: state => {
+    return state.set('isLoginDialogOpen', false);
+  },
 	[OPEN_ADD_DIALOG]: state => {
 	  return state.set('isAddDialogOpen', true);
   },

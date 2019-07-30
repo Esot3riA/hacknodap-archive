@@ -17,6 +17,7 @@ import * as actions from '../modules';
 import { fromJS } from 'immutable';
 import { Properties } from '../config/properties';
 import positionHistory from '../utils/HistoryPositioner';
+import LoginDialog from "../components/LoginDialog";
 
 const theme = createMuiTheme({
   typography: {
@@ -74,8 +75,10 @@ class App extends Component {
   };
   
   render() {
-    const { isAddDialogOpen, isHistoryDialogOpen, isSnackBarOpen,
+    const { isLoginDialogOpen,
+          isAddDialogOpen, isHistoryDialogOpen, isSnackBarOpen,
           snackBarMessage, newHistoryData, historyDialogData,
+          onOpenLoginDialog, onCloseLoginDialog,
           onOpenAddDialog, onCloseAddDialog,
           onCloseHistoryDialog, onCloseSnackbar,
           onChangeNewHistoryDate, onChangeNewHistoryTitle,
@@ -84,7 +87,8 @@ class App extends Component {
       <AppWrapper>
 	      <GlobalStyle />
 	      <MuiThemeProvider theme={theme}>
-          <Header />
+          <Header
+            onOpen={onOpenLoginDialog} />
           <TimelineContainer />
           <AddButton onOpen={onOpenAddDialog}/>
           <AddDialog
@@ -106,6 +110,10 @@ class App extends Component {
             onRemove={this.handleRemoveHistory}
             history={historyDialogData}
           />
+          <LoginDialog
+            open={isLoginDialogOpen}
+            onClose={onCloseLoginDialog}
+          />
 	      </MuiThemeProvider>
       </AppWrapper>
     );
@@ -113,6 +121,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  isLoginDialogOpen: state.get('isLoginDialogOpen'),
   isAddDialogOpen: state.get('isAddDialogOpen'),
   isHistoryDialogOpen: state.get('isHistoryDialogOpen'),
   isSnackBarOpen: state.get('isSnackBarOpen'),
@@ -122,6 +131,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onOpenLoginDialog: () => dispatch(actions.openLoginDialog()),
+  onCloseLoginDialog: () => dispatch(actions.closeLoginDialog()),
   onOpenAddDialog: () => dispatch(actions.openAddDialog()),
   onCloseAddDialog: () => dispatch(actions.closeAddDialog()),
   onCloseHistoryDialog: () => dispatch(actions.closeHistoryDialog()),
