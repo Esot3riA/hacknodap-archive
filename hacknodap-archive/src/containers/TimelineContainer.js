@@ -8,9 +8,8 @@ import { fromJS } from 'immutable';
 
 class TimelineContainer extends Component {
 	
-	componentDidMount() {
-		const { onReloadCurrentTime } = this.props;
-		setInterval(onReloadCurrentTime, 1000);
+	shouldComponentUpdate(nextProps, nextState, nextContext) {
+		return this.props !== nextProps;
 	}
 	
 	handleClickHistory = (_id) => {
@@ -23,25 +22,23 @@ class TimelineContainer extends Component {
 	};
 	
 	render() {
-		const { histories, currentTime } = this.props;
+		console.log('timelinecomntainer rendered');
+		const { histories } = this.props;
 		return (
 			<Timeline
 				histories={histories}
-				currentTime={currentTime}
 				onClickHistory={this.handleClickHistory} />
 		);
 	}
 }
 
 const mapStateToProps = (state) => ({
-	currentTime: state.get('currentTime'),
 	histories: state.get('histories')
 });
 
 const mapDispatchToProps = (dispatch) => ({
 	onOpenHistoryDialog: () => dispatch(actions.openHistoryDialog()),
-	loadHistoryDialog: (history) => dispatch(actions.loadHistoryDialog(history)),
-	onReloadCurrentTime: () => dispatch(actions.reloadCurrentTime())
+	loadHistoryDialog: (history) => dispatch(actions.loadHistoryDialog(history))
 });
 
 export default connect(

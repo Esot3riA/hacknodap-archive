@@ -17,20 +17,6 @@ const GlowLine = styled.div`
 	background: #f8b500;
 	box-shadow: 0 0 3px 1px orange;
 	
-	// Time counter
-	&::before {
-		content: '${props => props.currentTime}';
-		position: relative;
-		top: -35px;
-		width: 150px;
-		height: 18px;
-		background-color: rgb(40, 40, 40);
-		border-radius: 10px;
-		font-size: small;
-		color: white;
-		text-align: center;
-	}
-	
 	// Glow circle
 	&::after {
 		content: '';
@@ -51,11 +37,10 @@ const GlowLine = styled.div`
 	}
 `;
 
-const HistoryLine = ({ histories, currentTime, onClickHistory }) => {
+const HistoryLine = ({ histories, onClickHistory }) => {
 	return (
 		<LineDiv>
-			<GlowLine
-				currentTime={currentTime} />
+			<GlowLine />
 			<HistoryList
 				histories={histories}
 				onClickHistory={onClickHistory} />

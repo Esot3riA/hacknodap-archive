@@ -115,11 +115,9 @@ const HistoryBody = styled.div`
 	background-color: #ffedbd;
 	padding: 5px;
 `;
-const Picture = styled.div`
+const Picture = styled.img`
 	height: 100%;
-  background-image: url(${props => props.restAPIURL + props.imageURL});
-	background-size: cover;
-  background-repeat: space;
+	width: 100%;
 `;
 
 const History = ({ onClickHistory, _id, topDistance, location,
@@ -133,16 +131,13 @@ const History = ({ onClickHistory, _id, topDistance, location,
 		<HistoryDiv
 			topDistance={topDistance}
 			location={location}
-			onClick={handleClick}
-			>
+			onClick={handleClick}>
 			<HistoryHead>
 				<Date>{date}</Date>
 				<Title>{title}</Title>
 			</HistoryHead>
 			<HistoryBody>
-				<Picture
-					imageURL={imageURL[0]}
-					restAPIURL={Properties.restAPIURL}/>
+				<Picture src={Properties.restAPIURL + imageURL[0]} />
 			</HistoryBody>
 		</HistoryDiv>
 	);

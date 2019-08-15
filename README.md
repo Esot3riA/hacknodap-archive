@@ -16,8 +16,7 @@
 * 각 history에 유형(ex: 모임, 여행, ...)을 추가해서 다른 색으로 표시
 * timeline에 연도별 spliter 추가
 * 메인 화면의 history 부분의 오른쪽 하단에 사진 몇 개가 업로드 되어 있는지 표시
-* ~~RESTful Server에서 Image를 직접 노출시켜야 할지, 파일 시스템으로 관리할지 고민~~
-* ~~AddDialog 완성하기~~
+* Safari에서 new history 입력 시에 timeline이 계속 리로드 되는 문제 해결
 
 ## Useful Sites
 

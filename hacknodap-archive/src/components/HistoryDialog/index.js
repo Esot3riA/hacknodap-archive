@@ -7,14 +7,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import { Properties } from '../../config/properties';
 import styled from 'styled-components';
 
-const Picture = styled.div`
-  width: 400px;
-  height: 300px;
-  background-image: url(${props => props.restAPIURL + props.imageURL});
-	background-size: contain;
-  background-repeat: no-repeat;
-  background-position-x: center;
-  margin: 20px 0;
+const Picture = styled.img`
+  max-width: 100%;
+  margin: 10px 0;
 `;
 
 const HistoryDialog = ({ open, onClose, onRemove, history }) => {
@@ -22,10 +17,8 @@ const HistoryDialog = ({ open, onClose, onRemove, history }) => {
   const imageURLs = history.get('imageURL').toJS();
   const PictureList = imageURLs.map(
     (imageURL, i) => (
-      <Picture
-        key={i}
-        restAPIURL={Properties.restAPIURL}
-        imageURL={imageURL} />)
+      <Picture key={i}
+               src={Properties.restAPIURL + imageURL} />)
   );
   
   const handleRemove = () => {
@@ -36,6 +29,7 @@ const HistoryDialog = ({ open, onClose, onRemove, history }) => {
     <Dialog
       open={open}
       onClose={onClose}
+      maxWidth="md"
       scroll="paper">
       <DialogTitle>
         {title}
@@ -44,11 +38,11 @@ const HistoryDialog = ({ open, onClose, onRemove, history }) => {
         {PictureList}
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="primary">
-          Ok
-        </Button>
         <Button onClick={handleRemove} color="secondary">
           Remove
+        </Button>
+        <Button onClick={onClose} color="primary">
+          Ok
         </Button>
       </DialogActions>
     </Dialog>
