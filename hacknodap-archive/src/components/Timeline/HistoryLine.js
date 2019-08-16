@@ -13,7 +13,7 @@ const GlowLine = styled.div`
 	flex-direction: column;
 	align-items: center;
 	width: 3px;
-	height: 1500px;
+	height: ${props => props.lineLength}px;
 	background: #f8b500;
 	box-shadow: 0 0 3px 1px orange;
 	
@@ -38,9 +38,20 @@ const GlowLine = styled.div`
 `;
 
 const HistoryLine = ({ histories, onClickHistory }) => {
+	// Calculate length of history line
+	const baseLineLength = 1500;
+	const linePadding = 300;
+	
+	let lineLength = baseLineLength;
+	const lastHistory = histories.get(-1);
+	if (lastHistory !== undefined) {
+		const historyDistance = lastHistory.get('topDistance') + linePadding;
+		lineLength = (historyDistance > baseLineLength) ? historyDistance : baseLineLength;
+	}
+	
 	return (
 		<LineDiv>
-			<GlowLine />
+			<GlowLine lineLength={lineLength} />
 			<HistoryList
 				histories={histories}
 				onClickHistory={onClickHistory} />
