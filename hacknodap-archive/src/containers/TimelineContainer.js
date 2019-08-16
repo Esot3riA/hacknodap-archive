@@ -22,7 +22,6 @@ class TimelineContainer extends Component {
 	};
 	
 	render() {
-		console.log('timelinecomntainer rendered');
 		const { histories } = this.props;
 		return (
 			<Timeline
