@@ -1,8 +1,8 @@
-
-const express    = require('express');
-const app        = express();
+const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose   = require('mongoose');
+const mongoose = require('mongoose');
+const History = require('./models/history');
+const Account = require('./models/account');
 
 // Configure mongoose and Connect to db.
 const db = mongoose.connection;
@@ -13,6 +13,7 @@ db.once('open', function() {
 mongoose.connect('mongodb://localhost/historyDB', { useNewUrlParser: true });
 
 // Configure app to use bodyParser.
+const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('static'));
@@ -26,10 +27,9 @@ app.use((req, res, next) => {
   next();
 });
 
-const port = process.env.PORT || 3001;
-const History = require('./models/history');
-const router = require('./routes')(app, History);
+const router = require('./routes')(app, History, Account);
 
+const port = process.env.PORT || 3001;
 const server = app.listen(port, () => {
   console.log("Express server has started on port " + port);
 });
