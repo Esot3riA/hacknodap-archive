@@ -1,0 +1,21 @@
+{
+  "name": "hacknodap-archive-server",
+  "version": "1.0.0",
+  "description": "RESTful server of hacknodap-archive.",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon $NODE_DEBUG_OPTION ./app.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"yarn run server\" \"yarn run client\""
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "concurrently": "^4.1.2",
+    "express": "^4.16.4",
+    "mongoose": "^5.6.5",
+    "multer": "^1.4.1",
+    "nodemon": "^1.18.10",
+    "pbkdf2-password": "^1.2.1"
+  }
+}
