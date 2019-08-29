@@ -1,3 +1,4 @@
 export const Properties = {
-  restAPIURL: 'http://localhost:5000/api'
+  restAPIURL: (process.env.NODE_ENV === 'production') ?
+    'https://www.hacknodap-archive.com/api' : 'http://localhost:5000/api'
 };

@@ -4,9 +4,10 @@
   "description": "RESTful server of hacknodap-archive.",
   "main": "index.js",
   "scripts": {
+    "heroku-postbuild": "cd client && yarn install && yarn build",
     "server": "nodemon $NODE_DEBUG_OPTION ./app.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"yarn run server\" \"yarn run client\""
+    "start": "yarn server"
   },
   "license": "MIT",
   "dependencies": {

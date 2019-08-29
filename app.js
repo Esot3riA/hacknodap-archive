@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -10,7 +11,7 @@ db.on('error', console.error);
 db.once('open', function() {
   console.log("Connected to mongo server.");
 });
-mongoose.connect('mongodb://localhost/historyDB', { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 // Configure app to use bodyParser.
 const app = express();
@@ -27,7 +28,13 @@ app.use((req, res, next) => {
   next();
 });
 
+// Set routers.
+app.use(express.static(path.join(__dirname, "client/build")));
 const router = require('./routes')(app, History, Account);
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log("Express server has started on port " + port);

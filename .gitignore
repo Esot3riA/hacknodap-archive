@@ -9,6 +9,7 @@
 
 # production
 /build
+/client/build
 
 # webstorm resource
 /.idea
