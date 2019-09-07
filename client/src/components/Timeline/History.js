@@ -137,7 +137,7 @@ const History = ({ onClickHistory, _id, topDistance, location,
 				<Title>{title}</Title>
 			</HistoryHead>
 			<HistoryBody>
-				<Picture src={Properties.restAPIURL + imageURL[0]} />
+				<Picture src={Properties.s3URL + imageURL[0]} />
 			</HistoryBody>
 		</HistoryDiv>
 	);

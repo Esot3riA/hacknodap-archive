@@ -18,7 +18,7 @@ const HistoryDialog = ({ open, onClose, onRemove, history }) => {
   const PictureList = imageURLs.map(
     (imageURL, i) => (
       <Picture key={i}
-               src={Properties.restAPIURL + imageURL} />)
+               src={Properties.s3URL + imageURL} />)
   );
   
   const handleRemove = () => {

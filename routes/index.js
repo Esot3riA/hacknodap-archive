@@ -1,8 +1,26 @@
 const multer = require('multer');
+const multerS3 = require('multer-s3');
+const aws = require('aws-sdk');
 const fs = require('fs');
 const bkfd2Password = require('pbkdf2-password');
 
-const upload = multer({ dest: 'static/images/' });
+const s3 = new aws.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: 'ap-northeast-2'
+});
+const upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: 'hacknodap-archive-assets',
+    key: function(req, file, cb) {
+      let filename = Date.now().toString();
+      if (process.env.NODE_ENV !== 'production')
+        filename = 'local_' + filename;
+      cb(null, filename);
+    }
+  })
+});
 const hasher = bkfd2Password();
 
 module.exports = function(app, History, Account) {
@@ -41,8 +59,8 @@ module.exports = function(app, History, Account) {
     const imageFiles = req.files;
     let imageURL = [];
     imageFiles.forEach(imageFile => {
-      const imagePath = imageFile.path;
-      const imageUrlPath = imagePath.substring(imagePath.indexOf('/'));
+      const imagePath = imageFile.location;
+      const imageUrlPath = imagePath.substring(imagePath.lastIndexOf('/'));
       imageURL.push(imageUrlPath);
     });
     
