@@ -14,9 +14,6 @@
 # webstorm resource
 /.idea
 
-# image file
-/static/images
-
 # misc
 .DS_Store
 .env.local

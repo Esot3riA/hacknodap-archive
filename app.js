@@ -17,7 +17,6 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use('/api', express.static('static'));
 
 // Handle CORS.
 app.use((req, res, next) => {

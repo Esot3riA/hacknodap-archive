@@ -1,7 +1,6 @@
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const aws = require('aws-sdk');
-const fs = require('fs');
 const bkfd2Password = require('pbkdf2-password');
 
 const s3 = new aws.S3({
@@ -84,7 +83,12 @@ module.exports = function(app, History, Account) {
     History.findById(req.params.history_id, 'imageURL', { lean: true },(err, history) => {
       let count = history.imageURL.length;
       history.imageURL.forEach(imagePath => {
-        fs.unlink('./static' + imagePath, (err) => {
+        const params = {
+          Bucket: 'hacknodap-archive-assets',
+          Key: imagePath.substring(1)
+        };
+        
+        s3.deleteObject(params, (err) => {
           count--;
           if (err)
             console.log(err);
