@@ -116,6 +116,8 @@ const HistoryBody = styled.div`
 	padding: 5px;
 `;
 const Picture = styled.img`
+	object-fit: cover;
+	object-position: 50% 20%;
 	height: 100%;
 	width: 100%;
 `;
