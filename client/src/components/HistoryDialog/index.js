@@ -42,7 +42,7 @@ const HistoryDialog = ({ open, onClose, onRemove, history }) => {
         {/*  Remove*/}
         {/*</Button>*/}
         <Button onClick={onClose} color="primary">
-          Ok
+          확인
         </Button>
       </DialogActions>
     </Dialog>
