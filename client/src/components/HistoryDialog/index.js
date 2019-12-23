@@ -38,9 +38,9 @@ const HistoryDialog = ({ open, onClose, onRemove, history }) => {
         {PictureList}
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleRemove} color="secondary">
-          Remove
-        </Button>
+        {/*<Button onClick={handleRemove} color="secondary">*/}
+        {/*  Remove*/}
+        {/*</Button>*/}
         <Button onClick={onClose} color="primary">
           Ok
         </Button>
