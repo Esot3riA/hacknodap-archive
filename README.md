@@ -7,7 +7,7 @@
 
 
 ## Screenshots (in working...)
-![in_working](./working.jpg)
+![in_working](./working.gif)
 
 
 ## Todo
